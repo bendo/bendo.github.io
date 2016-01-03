@@ -1,0 +1,132 @@
+---
+title:  "Docker basics"
+tags: docker
+---
+
+- first install `pacman -Sy docker`, then run `docker.service`
+
+# Images, containers
+`docker images` &rarr; shows all images  
+`docker run -ti ubuntu bash` &rarr; run bash in ubuntu image (creates container)  
+
+
+`docker ps` &rarr; shows running containers  
+`docker ps -a` &rarr; shows all containers  
+`docker ps -l` &rarr; shows latest container  
+&#8627; **EXIT CODE** &rarr; good for debuging  
+
+- Image is **FIXED**  
+
+IMAGE &rarr; `docker run` &rarr; RUNNING CONTAINER  
+STOPPED CONTANER &rarr; `docker commit` &rarr; NEW IMAGE  
+
+`docker commit some_cont new_img` &rarr; creates new image (new\_img) from
+container (some\_cont)  
+
+`--rm` &rarr; deletes container when it exits  
+`-ti` &rarr; terminal interactive  
+`--privileged` &rarr; when root access is needed  
+`docker run --rm -ti ubuntu bash -c "sleep 3; echo all done"`  
+`docker rm my_cont`&rarr; remove container  
+`docker run -d -ti ubuntu bash` &rarr; detached container  
+`docker attach cont_name` &rarr; atach to container  
+
+Ctrl+p Ctrl+q &rarr; will detach from container  
+
+`docker exec -ti my_cont bash` &rarr; execute another process in container my\_cont
+(in this case bash)  
+
+`docker kill` &rarr; will kill container  
+
+## Logs
+`docker run --name example -d ubuntu bash -c "lose /etc/passwd"` &rarr; there
+is typo  
+`docker logs example` &rarr; lose command not found
+
+# Networking
+`docker run --rm -ti -p 45678:45678 -p 45679:45679 --name echo-server
+ubuntu:14.04 bash` &rarr; -p opens port outside:inside  
+
+`docker run --rm -ti -p 45678 -p 45679 --name echo-server
+ubuntu:14.04 bash` &rarr; -p opens inside ports, outside ports will be choosen
+by docker &rarr;  with `docker port echo-server` we can see outside ports for this
+container... when we start new container it will have **different** outside ports  
+56780/tcp -> 0.0.0.0:32769  
+56789/tcp -> 0.0.0.0:32768  
+
+`docker port echo-server` &rarr; shows ports on echo-server container  
+`docker inspect echo-server` &rarr; shows some infos as well as IP address 
+
+`docker run -p outside-port:inside-port/protocol (tcp|udp)` &rarr; if we need
+to specify protocol
+
+## Linking
+`docker run --rm -ti --name server ubuntu:14.04 bash` &rarr; server  
+`docker run --rm -ti --link server --name client ubuntu:14.04 bash` &rarr; client linked to server  
+
+on server we can run `nc -lp 1234` and on client `nc server 1234` &rarr; client
+is connected to server we can send some data...  
+
+**link can be break when containers restarts**
+
+## Network
+`docker network create example` &rarr; creates network  
+`docker run --rm -ti --net=example --name server ubuntu:14.04 bash` &rarr; server  
+`docker run --rm -ti --link server --net=example --name client ubuntu:14.04 bash` &rarr; client linked to server  
+
+**link will not be broken when containers restarts**
+
+## Images
+`docker images` &rarr; shows all local images  
+`docker commit bdeoe334wwd my-image-16:v1.3` &rarr; creates image with
+specified version
+
+- full name is `registry.com:port/organisation/image-name:version-tag`  
+
+`docker pull` &rarr; get the image &rarr; it is used by command `docker run`
+automatically  
+`docker rmi image-name` &rarr; removes the image
+
+## Volumes
+- its about sharing the data between hosts or containers  
+- they can be persistent (lives after container is stopped) or temporary (data
+  is gone after containers stop)  
+
+`docker volume create my-volume` &rarr; creates volume with name my-volume  
+`docker run --rm -ti -v my-volume:/mount-point ubuntu bash` &rarr; will mount
+my-volume to mount-point  
+`docker run --rm -ti -v ~/my-folder:/mount-point ubuntu bash` &rarr; will
+mount local folder my-folder to container  
+
+for temporary volumes  
+`docker run --rm -ti -v /shared --name wooow ubuntu bash` &rarr; so I have temp volume
+shared  
+`docker run --rm -ti --volumes-from wooow --name another ubuntu bash` &rarr; so I using volume from wooow container  
+`docker run --rm -ti --volumes-from another ubuntu bash` &rarr; now I took
+volume from another container, I will have this volume even if first original
+container which created volume was already closed  
+**this volume will exist till it exist at least one container which using this
+volume**  
+
+## Registries
+`docker search ubuntu` &rarr; search for ubuntu in docker register  
+
+- or use webpage <https://hub.docker.com/> 
+
+# Building docker images
+`docker build -t name-of-result .` &rarr; build new image  
+- each line takes the image from the previous line and makes another image  
+- the previous image is unchange  
+- state is cached &rarr; so when you build second time and there was some
+  download needed, it will be skiped  
+- each line is a call to docker run  
+
+`docker history image_name` &rarr; shows history of creating image
+
+simple `Dockerfile`
+```
+FROM debian:sid
+RUN apt-get -y update
+RUN apt-get -y install vim
+CMD ["/bin/vim", "/tmp/notes"]
+```
