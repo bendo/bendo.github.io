@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="Personal blog about technical and IT related topics.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>bendo.github.io - How To Remove Docker Images, Containers</title>
+    <link rel="stylesheet" href="../assets/css/default.css">
+    <link rel="stylesheet" href="../assets/css/syntax.css">
+    <link rel="stylesheet" href="../assets/css/all.css">
+    <link rel="stylesheet" href="../assets/fonts/DejaVuSans.ttf">
+    <script src="../assets/js/main.js"></script>
+  </head>
+  <body>
+    <div id="site">
+      <header>
+        <div class="logo">
+          <a href="../">..::bendo::..</a>
+        </div>
+        <nav>
+          <a href="../cheats.html">cheats</a>
+          <a href="../posts.html">posts</a>
+          <a href="../pages/projects.html">projects</a>
+          <a href="../pages/contact.html">contact</a>
+        </nav>
+      </header>
+      <main>
+        
+        
+        <h1>How To Remove Docker Images, Containers</h1>
+        
+        
+        <article>
+    <section class="header">
+        Posted on June  1, 2017
+        <br />
+        
+            Tags: <a title="All pages tagged 'docker'." href="../tags/docker.html" rel="tag">docker</a>
+        
+        <br />
+        
+    </section>
+    <section>
+        <h1 id="remove-docker-images">Remove docker images</h1>
+<p><strong>List:</strong> <code>docker images -a</code><br />
+<strong>Remove:</strong> <code>docker rmi Image Image</code></p>
+<h1 id="remove-dangling-images">Remove dangling images</h1>
+<p><strong>List:</strong> <code>docker images -f dangling=true</code><br />
+<strong>Remove:</strong> <code>docker rmi $(docker images -f dangling=true -q)</code></p>
+<h1 id="remove-all-images">Remove all images</h1>
+<p><strong>List:</strong> <code>docker images -a</code><br />
+<strong>Remove:</strong> <code>docker rmi $(docker images -a -q)</code></p>
+<h1 id="remove-all-exited-containers">Remove all exited containers</h1>
+<p><strong>List:</strong> <code>docker ps -a -f status=exited</code><br />
+<strong>Remove:</strong> <code>docker rm $(docker ps -a -f status=exited -q)</code></p>
+<h1 id="remove-containers-using-more-than-one-filter">Remove containers using more than one filter</h1>
+<p><strong>List:</strong> <code>docker ps -a -f status=exited -f status=created</code><br />
+<strong>Remove:</strong> <code>docker rm $(docker ps -a -f status=exited -f status=created -q)</code></p>
+<h1 id="stop-and-remove-all-containers">Stop and remove all containers</h1>
+<p><strong>List:</strong> <code>docker ps -a</code><br />
+<strong>Remove:</strong> <code>docker stop $(docker ps -a -q)</code><br />
+<strong>Remove:</strong> <code>docker rm $(docker ps -a -q)</code></p>
+    </section>
+</article>
+
+      </main>
+      <footer>
+        <ul>
+          <li><a class="fa-brands fa-github" href="https://github.com/bendo"></a></li>
+          <li><a class="fa-brands fa-twitter" href="https://twitter.com/bendo1307"></a></li>
+          <li><a class="fa-brands fa-stack-overflow" href="https://stackoverflow.com/users/4345921/bendo"></a></li>
+          <li><a class="fa-brands fa-instagram" href="https://www.instagram.com/bendo.art"></a></li>
+        </ul>
+        <div>
+          <div id="toggle-theme" class="fa-solid fa-moon"></div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

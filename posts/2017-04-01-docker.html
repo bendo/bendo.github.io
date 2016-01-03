@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="Personal blog about technical and IT related topics.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>bendo.github.io - Docker basics</title>
+    <link rel="stylesheet" href="../assets/css/default.css">
+    <link rel="stylesheet" href="../assets/css/syntax.css">
+    <link rel="stylesheet" href="../assets/css/all.css">
+    <link rel="stylesheet" href="../assets/fonts/DejaVuSans.ttf">
+    <script src="../assets/js/main.js"></script>
+  </head>
+  <body>
+    <div id="site">
+      <header>
+        <div class="logo">
+          <a href="../">..::bendo::..</a>
+        </div>
+        <nav>
+          <a href="../cheats.html">cheats</a>
+          <a href="../posts.html">posts</a>
+          <a href="../pages/projects.html">projects</a>
+          <a href="../pages/contact.html">contact</a>
+        </nav>
+      </header>
+      <main>
+        
+        
+        <h1>Docker basics</h1>
+        
+        
+        <article>
+    <section class="header">
+        Posted on April  1, 2017
+        <br />
+        
+            Tags: <a title="All pages tagged 'docker'." href="../tags/docker.html" rel="tag">docker</a>
+        
+        <br />
+        
+    </section>
+    <section>
+        <ul>
+<li>first install <code>pacman -Sy docker</code>, then run <code>docker.service</code></li>
+</ul>
+<h1 id="images-containers">Images, containers</h1>
+<p><code>docker images</code> → shows all images<br />
+<code>docker run -ti ubuntu bash</code> → run bash in ubuntu image (creates container)</p>
+<p><code>docker ps</code> → shows running containers<br />
+<code>docker ps -a</code> → shows all containers<br />
+<code>docker ps -l</code> → shows latest container<br />
+↳ <strong>EXIT CODE</strong> → good for debuging</p>
+<ul>
+<li>Image is <strong>FIXED</strong></li>
+</ul>
+<p>IMAGE → <code>docker run</code> → RUNNING CONTAINER<br />
+STOPPED CONTANER → <code>docker commit</code> → NEW IMAGE</p>
+<p><code>docker commit some_cont new_img</code> → creates new image (new_img) from
+container (some_cont)</p>
+<p><code>--rm</code> → deletes container when it exits<br />
+<code>-ti</code> → terminal interactive<br />
+<code>--privileged</code> → when root access is needed<br />
+<code>docker run --rm -ti ubuntu bash -c "sleep 3; echo all done"</code><br />
+<code>docker rm my_cont</code>→ remove container<br />
+<code>docker run -d -ti ubuntu bash</code> → detached container<br />
+<code>docker attach cont_name</code> → atach to container</p>
+<p>Ctrl+p Ctrl+q → will detach from container</p>
+<p><code>docker exec -ti my_cont bash</code> → execute another process in container my_cont
+(in this case bash)</p>
+<p><code>docker kill</code> → will kill container</p>
+<h2 id="logs">Logs</h2>
+<p><code>docker run --name example -d ubuntu bash -c "lose /etc/passwd"</code> → there
+is typo<br />
+<code>docker logs example</code> → lose command not found</p>
+<h1 id="networking">Networking</h1>
+<p><code>docker run --rm -ti -p 45678:45678 -p 45679:45679 --name echo-server ubuntu:14.04 bash</code> → -p opens port outside:inside</p>
+<p><code>docker run --rm -ti -p 45678 -p 45679 --name echo-server ubuntu:14.04 bash</code> → -p opens inside ports, outside ports will be choosen
+by docker → with <code>docker port echo-server</code> we can see outside ports for this
+container… when we start new container it will have <strong>different</strong> outside ports<br />
+56780/tcp -&gt; 0.0.0.0:32769<br />
+56789/tcp -&gt; 0.0.0.0:32768</p>
+<p><code>docker port echo-server</code> → shows ports on echo-server container<br />
+<code>docker inspect echo-server</code> → shows some infos as well as IP address</p>
+<p><code>docker run -p outside-port:inside-port/protocol (tcp|udp)</code> → if we need
+to specify protocol</p>
+<h2 id="linking">Linking</h2>
+<p><code>docker run --rm -ti --name server ubuntu:14.04 bash</code> → server<br />
+<code>docker run --rm -ti --link server --name client ubuntu:14.04 bash</code> → client linked to server</p>
+<p>on server we can run <code>nc -lp 1234</code> and on client <code>nc server 1234</code> → client
+is connected to server we can send some data…</p>
+<p><strong>link can be break when containers restarts</strong></p>
+<h2 id="network">Network</h2>
+<p><code>docker network create example</code> → creates network<br />
+<code>docker run --rm -ti --net=example --name server ubuntu:14.04 bash</code> → server<br />
+<code>docker run --rm -ti --link server --net=example --name client ubuntu:14.04 bash</code> → client linked to server</p>
+<p><strong>link will not be broken when containers restarts</strong></p>
+<h2 id="images">Images</h2>
+<p><code>docker images</code> → shows all local images<br />
+<code>docker commit bdeoe334wwd my-image-16:v1.3</code> → creates image with
+specified version</p>
+<ul>
+<li>full name is <code>registry.com:port/organisation/image-name:version-tag</code></li>
+</ul>
+<p><code>docker pull</code> → get the image → it is used by command <code>docker run</code>
+automatically<br />
+<code>docker rmi image-name</code> → removes the image</p>
+<h2 id="volumes">Volumes</h2>
+<ul>
+<li>its about sharing the data between hosts or containers<br />
+</li>
+<li>they can be persistent (lives after container is stopped) or temporary (data
+is gone after containers stop)</li>
+</ul>
+<p><code>docker volume create my-volume</code> → creates volume with name my-volume<br />
+<code>docker run --rm -ti -v my-volume:/mount-point ubuntu bash</code> → will mount
+my-volume to mount-point<br />
+<code>docker run --rm -ti -v ~/my-folder:/mount-point ubuntu bash</code> → will
+mount local folder my-folder to container</p>
+<p>for temporary volumes<br />
+<code>docker run --rm -ti -v /shared --name wooow ubuntu bash</code> → so I have temp volume
+shared<br />
+<code>docker run --rm -ti --volumes-from wooow --name another ubuntu bash</code> → so I using volume from wooow container<br />
+<code>docker run --rm -ti --volumes-from another ubuntu bash</code> → now I took
+volume from another container, I will have this volume even if first original
+container which created volume was already closed<br />
+<strong>this volume will exist till it exist at least one container which using this
+volume</strong></p>
+<h2 id="registries">Registries</h2>
+<p><code>docker search ubuntu</code> → search for ubuntu in docker register</p>
+<ul>
+<li>or use webpage <a href="https://hub.docker.com/" class="uri">https://hub.docker.com/</a></li>
+</ul>
+<h1 id="building-docker-images">Building docker images</h1>
+<p><code>docker build -t name-of-result .</code> → build new image<br />
+- each line takes the image from the previous line and makes another image<br />
+- the previous image is unchange<br />
+- state is cached → so when you build second time and there was some
+download needed, it will be skiped<br />
+- each line is a call to docker run</p>
+<p><code>docker history image_name</code> → shows history of creating image</p>
+<p>simple <code>Dockerfile</code></p>
+<pre><code>FROM debian:sid
+RUN apt-get -y update
+RUN apt-get -y install vim
+CMD [&quot;/bin/vim&quot;, &quot;/tmp/notes&quot;]</code></pre>
+    </section>
+</article>
+
+      </main>
+      <footer>
+        <ul>
+          <li><a class="fa-brands fa-github" href="https://github.com/bendo"></a></li>
+          <li><a class="fa-brands fa-twitter" href="https://twitter.com/bendo1307"></a></li>
+          <li><a class="fa-brands fa-stack-overflow" href="https://stackoverflow.com/users/4345921/bendo"></a></li>
+          <li><a class="fa-brands fa-instagram" href="https://www.instagram.com/bendo.art"></a></li>
+        </ul>
+        <div>
+          <div id="toggle-theme" class="fa-solid fa-moon"></div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

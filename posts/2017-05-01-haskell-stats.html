@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="Personal blog about technical and IT related topics.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>bendo.github.io - Haskell measuring function performance</title>
+    <link rel="stylesheet" href="../assets/css/default.css">
+    <link rel="stylesheet" href="../assets/css/syntax.css">
+    <link rel="stylesheet" href="../assets/css/all.css">
+    <link rel="stylesheet" href="../assets/fonts/DejaVuSans.ttf">
+    <script src="../assets/js/main.js"></script>
+  </head>
+  <body>
+    <div id="site">
+      <header>
+        <div class="logo">
+          <a href="../">..::bendo::..</a>
+        </div>
+        <nav>
+          <a href="../cheats.html">cheats</a>
+          <a href="../posts.html">posts</a>
+          <a href="../pages/projects.html">projects</a>
+          <a href="../pages/contact.html">contact</a>
+        </nav>
+      </header>
+      <main>
+        
+        
+        <h1>Haskell measuring function performance</h1>
+        
+        
+        <article>
+    <section class="header">
+        Posted on May  1, 2017
+        <br />
+        
+            Tags: <a title="All pages tagged 'haskell'." href="../tags/haskell.html" rel="tag">haskell</a>
+        
+        <br />
+        
+    </section>
+    <section>
+        <h1 id="gc-statistics">GC statistics</h1>
+<p>To check if garbage collection isn’t the problem.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">λ</span> ghc <span class="at">-O2</span> app.hs <span class="kw">&amp;&amp;</span> <span class="bu">time</span> ./app +RTS <span class="at">-s</span></span></code></pre></div>
+<p>As we can see below. Our program used a maximum of 2 megabytes on the heap,
+and spent 0.9% of its time doing garbage collection.
+In total, 98.9% of the program’s running time was spent doing productive work.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">λ</span> ghc <span class="at">-O2</span> 003.hs <span class="kw">&amp;&amp;</span> <span class="bu">time</span> ./003 +RTS <span class="at">-s</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">6857</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>      <span class="ex">24,873,640</span> bytes allocated in the heap</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>          <span class="ex">14,008</span> bytes copied during GC</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>          <span class="ex">44,504</span> bytes maximum residency <span class="er">(</span><span class="ex">2</span> sample<span class="er">(</span><span class="ex">s</span><span class="kw">))</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>          <span class="ex">29,224</span> bytes maximum slop</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>               <span class="ex">2</span> MB total memory in use <span class="er">(</span><span class="ex">0</span> MB lost due to fragmentation<span class="kw">)</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>                                     <span class="ex">Tot</span> time <span class="er">(</span><span class="ex">elapsed</span><span class="kw">)</span>  <span class="ex">Avg</span> pause  Max pause</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Gen</span>  0        22 colls,     0 par    0.001s   0.001s     0.0000s    0.0002s</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Gen</span>  1         2 colls,     0 par    0.000s   0.000s     0.0000s    0.0001s</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="ex">INIT</span>    time    0.000s  <span class="er">(</span>  <span class="ex">0.000s</span> elapsed<span class="kw">)</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="ex">MUT</span>     time    0.089s  <span class="er">(</span>  <span class="ex">0.090s</span> elapsed<span class="kw">)</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="ex">GC</span>      time    0.001s  <span class="er">(</span>  <span class="ex">0.001s</span> elapsed<span class="kw">)</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="ex">EXIT</span>    time    0.000s  <span class="er">(</span>  <span class="ex">0.000s</span> elapsed<span class="kw">)</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Total</span>   time    0.090s  <span class="er">(</span>  <span class="ex">0.091s</span> elapsed<span class="kw">)</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="ex">%GC</span>     time       0.9%  <span class="er">(</span><span class="ex">0.9%</span> elapsed<span class="kw">)</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Alloc</span> rate    280,897,811 bytes per MUT second</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Productivity</span>  98.9% of total user, 98.9% of total elapsed</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="ex">real</span>	0m0.094s</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="ex">user</span>	0m0.088s</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="ex">sys</span>	0m0.005s</span></code></pre></div>
+<h1 id="time-profiling">Time profiling</h1>
+<pre><code>λ ghc -O2 --make 003.hs -prof -fprof-auto -fprof-cafs -fforce-recomp
+[1 of 1] Compiling Main             ( 003.hs, 003.o )
+Linking 003 ...
+λ time ./003 +RTS -p
+6857
+
+real	0m0.126s
+user	0m0.124s
+sys	0m0.001s</code></pre>
+<p>If program run out of stack space then use flag, -K, to set a larger stack limit for our program.</p>
+<pre><code>λ time ./003 +RTS -p -K100M
+003: Most RTS options are disabled. Link with -rtsopts to enable them.
+
+real	0m0.008s
+user	0m0.000s
+sys	0m0.008s</code></pre>
+    </section>
+</article>
+
+      </main>
+      <footer>
+        <ul>
+          <li><a class="fa-brands fa-github" href="https://github.com/bendo"></a></li>
+          <li><a class="fa-brands fa-twitter" href="https://twitter.com/bendo1307"></a></li>
+          <li><a class="fa-brands fa-stack-overflow" href="https://stackoverflow.com/users/4345921/bendo"></a></li>
+          <li><a class="fa-brands fa-instagram" href="https://www.instagram.com/bendo.art"></a></li>
+        </ul>
+        <div>
+          <div id="toggle-theme" class="fa-solid fa-moon"></div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

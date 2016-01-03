@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="Personal blog about technical and IT related topics.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>bendo.github.io - Git</title>
+    <link rel="stylesheet" href="../../assets/css/default.css">
+    <link rel="stylesheet" href="../../assets/css/syntax.css">
+    <link rel="stylesheet" href="../../assets/css/all.css">
+    <link rel="stylesheet" href="../../assets/fonts/DejaVuSans.ttf">
+    <script src="../../assets/js/main.js"></script>
+  </head>
+  <body>
+    <div id="site">
+      <header>
+        <div class="logo">
+          <a href="../../">..::bendo::..</a>
+        </div>
+        <nav>
+          <a href="../../cheats.html">cheats</a>
+          <a href="../../posts.html">posts</a>
+          <a href="../../pages/projects.html">projects</a>
+          <a href="../../pages/contact.html">contact</a>
+        </nav>
+      </header>
+      <main>
+        
+        
+        <h1>Git</h1>
+        
+        
+        <article>
+    <section>
+        <h2 id="create">Create</h2>
+<ul>
+<li><strong>git init</strong> &lt;project&gt; → create a new directory &lt;project&gt; with git repository</li>
+<li><strong>git clone ssh://user@domain.com/repo.git</strong> → clone an existing repository</li>
+</ul>
+<h2 id="local-changes">Local changes</h2>
+<ul>
+<li><strong>git status</strong> → changed files in your working directory</li>
+<li><strong>git status -s</strong> → changed files in your working directory, short view</li>
+<li><strong>git diff</strong> → changes to tracked files</li>
+<li><strong>git diff --staged</strong> → changes to staged files</li>
+<li><strong>git add .</strong> → add all current changes from current directory down</li>
+<li><strong>git add ..</strong> → add all current changes from one directory up to down</li>
+<li><strong>git add --all</strong> → add all current changes in whole repository</li>
+<li><strong>git add -p</strong> &lt;file&gt; → add some changes in &lt;file&gt; to the next</li>
+<li><strong>git rm</strong> &lt;file&gt; → remove &lt;file&gt; also from hard drive</li>
+<li><strong>git rm --cached</strong> &lt;file&gt; → remove &lt;file&gt; only from repository (stays on hard drive)</li>
+<li><strong>git mv README README.md</strong> → git rm README, git add README.md commit</li>
+<li><strong>git commit -a</strong> → commit all local changes in tracked files</li>
+<li><strong>git commit</strong> → commit previously staged changes</li>
+<li><strong>git commit --amend</strong> → change the last commit</li>
+</ul>
+<h2 id="commit-history">Commit history</h2>
+<ul>
+<li><strong>git log</strong> → show all commits, starting with newest</li>
+<li><strong>git log -p</strong> &lt;file&gt; → show changes over time for specific &lt;file&gt;</li>
+<li><strong>git log -2</strong> → show last two commits</li>
+<li><strong>git log --stat</strong> → show summarizing info per commit</li>
+<li><strong>git log --pretty=oneline</strong> / <strong>short</strong> / <strong>full</strong> / <strong>fuller</strong></li>
+<li><strong>git log --pretty=format:“%h_%an, %ar : %s”</strong></li>
+<li><strong>git log --pretty=“%h - %s”</strong> → h = hash | s = subject</li>
+<li><strong>git log --graph</strong> → shows commits with graph</li>
+<li><strong>git log --since=2.weeks</strong> → show all commits since two weeks</li>
+<li><strong>git log --until=3.weeks</strong> → show all commits until three weeks</li>
+<li><strong>git log --author=</strong>&lt;user&gt; → show all commits from &lt;user&gt;</li>
+<li><strong>git log --grep ‘commit name’</strong> → filter commits with the commit name</li>
+<li><strong>git log origin/master..HEAD</strong> → show commits which weren’t pushed yet</li>
+<li><strong>git log -Sfunction_name</strong> → show all commits with this function in it</li>
+<li><strong>git blame</strong> &lt;file&gt; → who changed what and when in &lt;file&gt;</li>
+</ul>
+<h2 id="branches-and-tags">Branches and tags</h2>
+<ul>
+<li><strong>git branch -av</strong> → list all existing branches</li>
+<li><strong>git branch</strong> &lt;new-branch&gt; → create a new branch based on your current HEAD</li>
+<li><strong>git branch -d</strong> &lt;branch&gt; → delete a local branch</li>
+<li><strong>git checkout</strong> &lt;branch&gt; → switch HEAD branch</li>
+<li><strong>git checkout --track</strong> &lt;remote/branch&gt; → create a new tracking branch based on a remote branch</li>
+<li><strong>git tag</strong> → lists all tags</li>
+<li><strong>git tag</strong> &lt;tag-name&gt; → make a current commit with a tag</li>
+<li><strong>git tag -a v1.0 -m ‘my version 1.0’</strong> → create anotated tag</li>
+<li><strong>git tag v1.4_lw</strong> → create lightweight tag</li>
+<li><strong>git tag -a v0.6 9cf84</strong> → put tag to particullar commit</li>
+<li><strong>git show v 1.0</strong></li>
+<li><strong>git push origin</strong> &lt;tagname&gt; → push particullar tag</li>
+<li><strong>git push origin --tags</strong> → push all the tags</li>
+</ul>
+<h2 id="update-and-publish">Update and publish</h2>
+<ul>
+<li><strong>git remote</strong> → lists the shortname of each remote</li>
+<li><strong>git remote -v</strong> → list all currently configured remotes</li>
+<li><strong>git remote add</strong> &lt;shortname&gt; &lt;url&gt; → add new remote repository</li>
+<li><strong>git remote show</strong> &lt;remote&gt; → show info about a remote</li>
+<li><strong>git remote rename pb paul</strong> → rename remote from pb to paul</li>
+<li><strong>git remote rm paul</strong> → remove remote paul</li>
+<li><strong>git fetch</strong> &lt;remote&gt; → get all changes from remote (BUT NOT MERGE)</li>
+<li><strong>git pull</strong> → get all changes from remote and MERGE</li>
+<li><strong>git push</strong> &lt;remote&gt; &lt;branch&gt; → publish local changes on a remote</li>
+<li><strong>git branch -dr</strong> &lt;remote/branch&gt; → delete a branch on the remote</li>
+</ul>
+<h2 id="merge-and-rebase">Merge and rebase</h2>
+<ul>
+<li><strong>git merge</strong> &lt;branch&gt; → merge &lt;branch&gt; into your current HEAD</li>
+<li><strong>git rebase</strong> &lt;branch&gt; → rebase your current HEAD onto &lt;branch&gt;</li>
+<li><strong>git rebase --abort</strong> → abort rebase</li>
+<li><strong>git rebase --continue</strong> → continue a rebase after resolving conflicts</li>
+<li><strong>git mergetool</strong> → use your configured merge tool to solve conflicts</li>
+</ul>
+<h2 id="undo">Undo</h2>
+<ul>
+<li><strong>git checkout HEAD</strong> &lt;file&gt; → discard local changes in a specific file</li>
+<li><strong>git revert</strong> &lt;commit&gt; → revert a commit (by producing a new commit with contrary changes)</li>
+<li><strong>git reset --hard HEAD</strong> → discard all local changes in you working directory</li>
+<li><strong>git reset --hard</strong> &lt;commit&gt; → reset your HEAD pointer to a previous commit …and discard all changes since then</li>
+<li><strong>git reset</strong> &lt;commit&gt; → …and preserve all changes as unstaged changes</li>
+<li><strong>git reset --keep</strong> &lt;commit&gt; → …and preserve uncommitted local changes</li>
+</ul>
+<h2 id="config">Config</h2>
+<ul>
+<li><strong>git config --global user.name “bendo”</strong></li>
+<li><strong>git config --global user.email bendo@gmail.com</strong><br />
+<strong>global</strong> → write into config and ~<br />
+<strong>system</strong> → write into etc<br />
+<strong>without anything</strong> → write only to project</li>
+<li><strong>git config --list</strong> → shows settings</li>
+<li><strong>git config user.name</strong> → shows user name from settings</li>
+</ul>
+    </section>
+</article>
+
+      </main>
+      <footer>
+        <ul>
+          <li><a class="fa-brands fa-github" href="https://github.com/bendo"></a></li>
+          <li><a class="fa-brands fa-twitter" href="https://twitter.com/bendo1307"></a></li>
+          <li><a class="fa-brands fa-stack-overflow" href="https://stackoverflow.com/users/4345921/bendo"></a></li>
+          <li><a class="fa-brands fa-instagram" href="https://www.instagram.com/bendo.art"></a></li>
+        </ul>
+        <div>
+          <div id="toggle-theme" class="fa-solid fa-moon"></div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

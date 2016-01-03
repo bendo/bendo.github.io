@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="Personal blog about technical and IT related topics.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>bendo.github.io - Setting up airline-vim</title>
+    <link rel="stylesheet" href="../assets/css/default.css">
+    <link rel="stylesheet" href="../assets/css/syntax.css">
+    <link rel="stylesheet" href="../assets/css/all.css">
+    <link rel="stylesheet" href="../assets/fonts/DejaVuSans.ttf">
+    <script src="../assets/js/main.js"></script>
+  </head>
+  <body>
+    <div id="site">
+      <header>
+        <div class="logo">
+          <a href="../">..::bendo::..</a>
+        </div>
+        <nav>
+          <a href="../cheats.html">cheats</a>
+          <a href="../posts.html">posts</a>
+          <a href="../pages/projects.html">projects</a>
+          <a href="../pages/contact.html">contact</a>
+        </nav>
+      </header>
+      <main>
+        
+        
+        <h1>Setting up airline-vim</h1>
+        
+        
+        <article>
+    <section class="header">
+        Posted on January  1, 2017
+        <br />
+        
+            Tags: <a title="All pages tagged 'vim'." href="../tags/vim.html" rel="tag">vim</a>
+        
+        <br />
+        
+    </section>
+    <section>
+        <p>Install airline:<br />
+<code>Plug 'bling/vim-airline'</code></p>
+<p>Set airline powerline fonts in .vimrc:<br />
+<code>g:airline_powerline_fonts = 1</code></p>
+<p>Install fonts:</p>
+<pre class="shell"><code>λ git clone https://github.com/powerline/fonts.git
+λ cd fonts
+λ ./install.sh</code></pre>
+<p>Then in ~/.Xresources configure urxvt to use a powerline font:<br />
+<code>URxvt.font: xft:DejaVu Sans Mono for Powerline:size=9</code></p>
+<p>Then reloading the configuration:<br />
+<code>xrdb -merge ~/.Xresources</code></p>
+<p>And restart urxvtd:</p>
+<pre class="shell"><code>λ killall urxvtd
+λ urxvtd -q -o -f</code></pre>
+    </section>
+</article>
+
+      </main>
+      <footer>
+        <ul>
+          <li><a class="fa-brands fa-github" href="https://github.com/bendo"></a></li>
+          <li><a class="fa-brands fa-twitter" href="https://twitter.com/bendo1307"></a></li>
+          <li><a class="fa-brands fa-stack-overflow" href="https://stackoverflow.com/users/4345921/bendo"></a></li>
+          <li><a class="fa-brands fa-instagram" href="https://www.instagram.com/bendo.art"></a></li>
+        </ul>
+        <div>
+          <div id="toggle-theme" class="fa-solid fa-moon"></div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

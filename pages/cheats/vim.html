@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="Personal blog about technical and IT related topics.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>bendo.github.io - Vim</title>
+    <link rel="stylesheet" href="../../assets/css/default.css">
+    <link rel="stylesheet" href="../../assets/css/syntax.css">
+    <link rel="stylesheet" href="../../assets/css/all.css">
+    <link rel="stylesheet" href="../../assets/fonts/DejaVuSans.ttf">
+    <script src="../../assets/js/main.js"></script>
+  </head>
+  <body>
+    <div id="site">
+      <header>
+        <div class="logo">
+          <a href="../../">..::bendo::..</a>
+        </div>
+        <nav>
+          <a href="../../cheats.html">cheats</a>
+          <a href="../../posts.html">posts</a>
+          <a href="../../pages/projects.html">projects</a>
+          <a href="../../pages/contact.html">contact</a>
+        </nav>
+      </header>
+      <main>
+        
+        
+        <h1>Vim</h1>
+        
+        
+        <article>
+    <section>
+        <h2 id="movement">Movement</h2>
+<ul>
+<li><strong>h j k l</strong> → basic movement keys … <strong>10j</strong></li>
+<li><strong>b w B W</strong> → move back/forward by token/word</li>
+<li><strong>e E</strong> → move to end of the token/word</li>
+<li><strong>0</strong> → jump to first character of line</li>
+<li><strong>$</strong> → jump to end of the line</li>
+<li><strong>^</strong> → jump to first non-whitespace character of line</li>
+<li><strong>_</strong> → jump to first non-whitespace character of line</li>
+<li><strong>g_</strong> → jump to last non-whitespace character of line</li>
+<li><strong>ctrl+u ctrl+d</strong> → scroll up/down half page</li>
+<li><strong>ctrl+y ctrl+e</strong> → scroll up/down line by line</li>
+<li><strong>ctrl+b ctrl+f</strong> → scroll up/down full page</li>
+<li><strong>H M L</strong> → move to the top/middle/bottom of the screen</li>
+<li><strong>’’</strong> → jump back to where you just were</li>
+<li><strong>ctrl+o ctrl+i</strong> → move backward/forward through the jump history</li>
+<li><strong>{}</strong> → move to the beginning/end of the paragraph</li>
+<li><strong>()</strong> → move to the beginning/end of the sentence</li>
+<li><strong>%</strong> → jump to the corresponding (, {, [</li>
+<li><strong>50%</strong> → jump to the line at the 50% of the file</li>
+<li><strong>:42</strong> → jump to the line 42</li>
+<li><strong>42G</strong> → jump to the line 42</li>
+<li><strong>10|</strong> → move to column 10</li>
+<li><strong>f</strong>&lt;char&gt; → move to next &lt;char&gt; on line → <strong>;</strong> next <strong>,</strong> previous occurrence</li>
+<li><strong>F</strong>&lt;char&gt; → move to previous &lt;char&gt; on line</li>
+<li><strong>t</strong>&lt;char&gt; → move before next &lt;char&gt; on line</li>
+<li><strong>T</strong>&lt;char&gt; → move before previous &lt;char&gt; on line</li>
+</ul>
+<h2 id="movement-in-insert-mode">Movement in insert mode</h2>
+<ul>
+<li><strong>shift+right arrow</strong> → go to the right, word by word</li>
+<li><strong>shift+left arrow</strong> → go to the left, word by word</li>
+</ul>
+<h2 id="moving-screen">Moving screen</h2>
+<ul>
+<li><strong>zz</strong> → scroll the view, that cursor is at center</li>
+<li><strong>zt</strong> → (top) scroll the view, that cursor is at top</li>
+<li><strong>zb</strong> → (bottom) scroll the view, that cursor is at bottom</li>
+</ul>
+<h2 id="marking-location">Marking location</h2>
+<ul>
+<li><strong>m</strong>&lt;char&gt; → create mark &lt;char&gt; to the current location <strong>ma</strong></li>
+<li><strong>'</strong>&lt;char&gt; → move to the line containing mark &lt;char&gt; <strong>'a</strong></li>
+<li><strong>`</strong>&lt;char&gt; → move to the precise location of mark &lt;char&gt; <strong>`a</strong></li>
+</ul>
+<h2 id="macros">Macros</h2>
+<ul>
+<li><strong>q</strong>&lt;char&gt; command <strong>q</strong> → create macro &lt;char&gt; containing command</li>
+<li><strong>qa0vwhr_jq</strong> → create macro <strong>a</strong> which in visual mode replace everything from begining of line to the first word with underscore</li>
+<li><strong>@</strong>&lt;char&gt; → use macro &lt;char&gt;</li>
+<li><strong>2@</strong>&lt;char&gt; → use macro &lt;char&gt; two times</li>
+<li><strong>@@</strong> → use last macro</li>
+<li>:reg → shows all registers / macros</li>
+</ul>
+<h2 id="registers">Registers</h2>
+<ul>
+<li><strong>"</strong>&lt;char&gt; command → create register &lt;char&gt; containing output of command</li>
+<li><strong>"ay/foo</strong> → yanking a copy of the text from here to the next line containing “foo” into <strong>a</strong> register</li>
+<li><strong>"ap</strong> → pastes a copy of the <strong>a</strong> register’s content into the text after cursor</li>
+<li><strong>"+yw</strong> → copy to system’s clipboard</li>
+<li><strong>"+p</strong> → paste from system’s clipboard</li>
+</ul>
+<h2 id="search">Search</h2>
+<p>To search for similar word under the cursor type <strong>/</strong> then press <strong>ctrl-r</strong> and <strong>ctrl-w</strong> ← this will
+copy the word under the cursor to command line. Now you can edit it and press <strong>enter</strong>. To return to your
+previous possition hit <strong>ctrl-o</strong>.</p>
+<ul>
+<li><strong>/</strong>&lt;char&gt; → search for &lt;char&gt; forwords</li>
+<li><strong>/</strong> → repeat the last search</li>
+<li><strong>5/pattern</strong> → search for fifth occurrence of the pattern</li>
+<li><strong>n</strong> → to go to next occurrence</li>
+<li><strong>N</strong> → to go to previous occurrence</li>
+<li><strong>ggn</strong> → to go to first occurrence</li>
+<li><strong>GN</strong> → to go to last occurrence</li>
+<li><strong>?</strong>&lt;char&gt; → search for &lt;char&gt; backwords</li>
+<li><strong>n</strong> → to go to previous occurrence</li>
+<li><strong>N</strong> → to go to next occurrence</li>
+<li><strong># *</strong> → find the previous/next occurrence of the exact word under the cursor (search → search)</li>
+<li><strong>g# g*</strong> → find the previous/next occurrence of the word under the cursor (search → searching)</li>
+<li><strong>6*</strong> → search for sixth occurrence of the current word under the cursor</li>
+</ul>
+<h2 id="editing">Editing</h2>
+<ul>
+<li><strong>i a I A</strong> → insert/append at/after cursor/beginning/end of line</li>
+<li><strong>o O</strong> → open new line below/above the current line</li>
+<li><strong>o</strong>&lt;esc&gt; → add a blank line</li>
+<li><strong>cw cW</strong> → correct token/world following the cursor</li>
+<li><strong>cc</strong> → correct line by clearing and then entering insert mode</li>
+<li><strong>C</strong> → correct till end of the line</li>
+<li><strong>dd</strong> → delete line</li>
+<li><strong>D</strong> → delete till end of the line - same as <strong>d$</strong></li>
+<li><strong>ct cf ci ca</strong> → correct up to or including specific characters</li>
+<li><strong>dt df di da</strong> → delete up to or including specific characters</li>
+<li><strong>s</strong> → delete character at the cursor ant then enter insert mode <strong>5s</strong></li>
+<li><strong>yy</strong> → copy line</li>
+<li><strong>yw yW</strong> → copy token/word</li>
+<li><strong>p P</strong> → paste before/after cursor</li>
+<li><strong>u ctrl+r</strong> → undo and redo</li>
+<li><strong>.</strong> → repeat the previous edit command</li>
+<li><strong>r</strong> → replace one character</li>
+<li><strong>R</strong> → replace till the escape key is hit</li>
+</ul>
+<h2 id="indent">Indent</h2>
+<ul>
+<li><strong>&gt;&gt;</strong> → indent a line to the right</li>
+<li><strong>&lt;&lt;</strong> → indent a line to the left</li>
+<li><strong>5&lt;&lt;</strong> → indent 5 lines to the left</li>
+<li><strong>&gt;}</strong> → indent one paragraph to the right</li>
+<li><strong>=i}</strong> → auto indent everything inside a paragraph</li>
+<li><strong>&gt;aB</strong> → indent a Block</li>
+<li><strong>==</strong> → auto indent a line</li>
+<li><strong>gg=G</strong> → select whole file and autoindent</li>
+<li><strong>ggvG=</strong> → select whole file and autoindent in visual mode</li>
+</ul>
+<h2 id="correcting-text">Correcting Text</h2>
+<p>Combination with <strong>c</strong> or <strong>d</strong><br />
+- <strong>t</strong>&lt;char&gt; exclusive match: continue up to the next &lt;char&gt; on this line<br />
+- <strong>f</strong>&lt;char&gt; inclusive match: continue up to the next &lt;char&gt; on this line<br />
+- <strong>i</strong>&lt;char&gt; exclusive inner match: apply to the text bounded by &lt;char&gt;<br />
+- <strong>a</strong>&lt;char&gt; inclusive inner match: apply to the text bounded by &lt;char&gt;</p>
+<p>Say that I have the code below, and I want to completely replace the code
+inside the map() with something else:</p>
+<p><code>signal.map(count -&gt; String.format(“%d cookies, ah ah ah”, count));</code></p>
+<p>The first thing I need to do is get my cursor anywhere inside the parentheses
+belonging to map(). The exact command I use depends on where I end up:</p>
+<ul>
+<li><p>If the cursor is just inside the open paren for map(), I could use “<strong>cf)</strong>”. This corrects all text up to and including the next “<strong>)</strong>” on this line.</p></li>
+<li><p>Say the cursor is on the word “format”. I would do “<strong>ci(</strong>”. Vim will search backward to find the first open paren, then search forward to find its match, and correct the text between (but not including) those characters.</p></li>
+<li><p>Maybe my cursor was already closest to the word “cookies.” To break out of the inner parentheses, I would need to add a count and do “<strong>2ci(</strong>”. This is almost identical to the last example, except that the 2 is needed due to the nested parentheses.</p></li>
+</ul>
+<p>Some usefull commands:<br />
+- <strong>dw</strong> → delete to the end of a word<br />
+- <strong>diw</strong> → delete the entire word at the cursor<br />
+- <strong>cit</strong> → change the content inside an HTML tag<br />
+- <strong>cip</strong> → change the content inside a paragraph<br />
+- <strong>ci"</strong> → change the content inside a “…”<br />
+- <strong>y4j</strong> → copy 4 lines</p>
+<h2 id="working-with-files">Working with files</h2>
+<ul>
+<li><strong>vim file.txt</strong> → open file test.txt</li>
+<li><strong>vim</strong> :e test.txt → open file test.txt from vim</li>
+<li><strong>vim</strong> :wq test.txt → save as test.txt</li>
+</ul>
+<h2 id="tabs">Tabs</h2>
+<ul>
+<li><strong>gt</strong> → go to next tab</li>
+<li><strong>gT</strong> → go to previous tab</li>
+<li><strong>2gt</strong> → go to second tab</li>
+</ul>
+<h2 id="explore-file-system">Explore file system</h2>
+<ul>
+<li><strong>:e.</strong> → open file explorer at current working directory</li>
+<li><strong>:sp.</strong> → open file explorer in split at current working directory</li>
+<li><strong>:vs.</strong> → open file explorer in vertical split at current working directory</li>
+<li><strong>:Se</strong> → open file explorer in split at directory of current file</li>
+</ul>
+<h2 id="visual-mode">Visual mode</h2>
+<ul>
+<li><strong>Ctrl + v</strong> → visual block</li>
+<li><strong>v</strong> → visual</li>
+<li><strong>vW</strong> → select word</li>
+<li><strong>vjjjJ</strong> → select three lines and join them to one</li>
+</ul>
+<h2 id="search-and-replace">Search and replace</h2>
+<ul>
+<li><strong>:%s/foo/bar/g</strong> → change each ‘foo’ to ‘bar’ in <strong>all lines</strong></li>
+<li><strong>:s/foo/bar/g</strong> → change each ‘foo’ to ‘bar’ in the <strong>current line only</strong>)</li>
+<li><strong>:%s/foo/bar/gc</strong> → change each ‘foo’ to ‘bar’, but <strong>ask for confirmation</strong> first</li>
+<li><strong>:%s/&lt;foo&gt;/bar/gc</strong> → change only whole words <strong>exactly matching</strong> ‘foo’ to ‘bar’</li>
+<li><strong>:%s/foo/bar/gci</strong> → change each ‘foo’ to ‘bar’ <strong>case insensitive</strong></li>
+<li><strong>:%s/foo/bar/gcI</strong> → change each ‘foo’ to ‘bar’ <strong>case sensitive</strong></li>
+<li><strong>:%s/foo//gn</strong> → show count number of matches of ‘foo’</li>
+<li><strong>:%s///gn</strong> → show count number of matches of last searched pattern (if * used on some word)</li>
+</ul>
+    </section>
+</article>
+
+      </main>
+      <footer>
+        <ul>
+          <li><a class="fa-brands fa-github" href="https://github.com/bendo"></a></li>
+          <li><a class="fa-brands fa-twitter" href="https://twitter.com/bendo1307"></a></li>
+          <li><a class="fa-brands fa-stack-overflow" href="https://stackoverflow.com/users/4345921/bendo"></a></li>
+          <li><a class="fa-brands fa-instagram" href="https://www.instagram.com/bendo.art"></a></li>
+        </ul>
+        <div>
+          <div id="toggle-theme" class="fa-solid fa-moon"></div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

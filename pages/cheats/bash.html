@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="Personal blog about technical and IT related topics.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>bendo.github.io - Bash</title>
+    <link rel="stylesheet" href="../../assets/css/default.css">
+    <link rel="stylesheet" href="../../assets/css/syntax.css">
+    <link rel="stylesheet" href="../../assets/css/all.css">
+    <link rel="stylesheet" href="../../assets/fonts/DejaVuSans.ttf">
+    <script src="../../assets/js/main.js"></script>
+  </head>
+  <body>
+    <div id="site">
+      <header>
+        <div class="logo">
+          <a href="../../">..::bendo::..</a>
+        </div>
+        <nav>
+          <a href="../../cheats.html">cheats</a>
+          <a href="../../posts.html">posts</a>
+          <a href="../../pages/projects.html">projects</a>
+          <a href="../../pages/contact.html">contact</a>
+        </nav>
+      </header>
+      <main>
+        
+        
+        <h1>Bash</h1>
+        
+        
+        <article>
+    <section>
+        <h2 id="command-editing-shortcuts">Command Editing Shortcuts</h2>
+<ul>
+<li><strong>Ctrl + a</strong> – go to the start of the command line</li>
+<li><strong>Ctrl + e</strong> – go to the end of the command line</li>
+<li><strong>Ctrl + k</strong> – delete from cursor to the end of the command line</li>
+<li><strong>Ctrl + u</strong> – delete from cursor to the start of the command line</li>
+<li><strong>Ctrl + w</strong> – delete from cursor to start of word (i.e. delete backwards one word)</li>
+<li><strong>Ctrl + y</strong> – paste word or text that was cut using one of the deletion shortcuts (such as the one above) after the cursor</li>
+<li><strong>Ctrl + xx</strong> – move between start of command line and current cursor position (and back again)</li>
+<li><strong>Alt + b</strong> – move backward one word (or go to start of word the cursor is currently on)</li>
+<li><strong>Alt + f</strong> – move forward one word (or go to end of word the cursor is currently on)</li>
+<li><strong>Alt + d</strong> – delete to end of word starting at cursor (whole word if cursor is at the beginning of word)</li>
+<li><strong>Alt + c</strong> – capitalize to end of word starting at cursor (whole word if cursor is at the beginning of word)</li>
+<li><strong>Alt + u</strong> – make uppercase from cursor to end of word</li>
+<li><strong>Alt + l</strong> – make lowercase from cursor to end of word</li>
+<li><strong>Alt + t</strong> – swap current word with previous</li>
+<li><strong>Ctrl + f</strong> – move forward one character</li>
+<li><strong>Ctrl + b</strong> – move backward one character</li>
+<li><strong>Ctrl + d</strong> – delete character under the cursor</li>
+<li><strong>Ctrl + h</strong> – delete character before the cursor</li>
+<li><strong>Ctrl + t</strong> – swap character under cursor with the previous one</li>
+</ul>
+<h2 id="command-recall-shortcuts">Command Recall Shortcuts</h2>
+<ul>
+<li><strong>Ctrl + r</strong> – search the history backwards</li>
+<li><strong>Ctrl + g</strong> – escape from history searching mode</li>
+<li><strong>Ctrl + p</strong> – previous command in history (i.e. walk back through the command history)</li>
+<li><strong>Ctrl + n</strong> – next command in history (i.e. walk forward through the command history)</li>
+<li><strong>Alt + .</strong> – use the last word of the previous command</li>
+</ul>
+<h2 id="command-control-shortcuts">Command Control Shortcuts</h2>
+<ul>
+<li><strong>Ctrl + l</strong> – clear the screen</li>
+<li><strong>Ctrl + s</strong> – stops the output to the screen (for long running verbose command)</li>
+<li><strong>Ctrl + q</strong> – allow output to the screen (if previously stopped using command above)</li>
+<li><strong>Ctrl + c</strong> – terminate the command</li>
+<li><strong>Ctrl + z</strong> – suspend/stop the command</li>
+</ul>
+<h2 id="bash-bang-commands">Bash Bang (!) Commands</h2>
+<ul>
+<li><strong>!!</strong> – run last command</li>
+<li><strong>!blah</strong> – run the most recent command that starts with ‘blah’ (e.g. !ls)</li>
+<li><strong>!blah:p</strong> – print out the command that <strong>!blah</strong> would run (also adds it as the latest command in the command history)</li>
+<li><strong>!$</strong> – the last word of the previous command (same as <strong>Alt + .</strong>)</li>
+<li><strong>!$:p</strong> – print out the word that <strong>!$</strong> would substitute</li>
+<li><strong>!*</strong> – the previous command except for the last word (e.g. if you type <code>find some_file.txt /</code>, then <strong>!*</strong> would give you <code>find some\_file.txt</code>)</li>
+<li><strong>!*:p</strong> – print out what <strong>!*</strong> would substitute</li>
+</ul>
+<h2 id="before-perform-any-change-make-backup-easy-way">Before perform any change make backup easy way</h2>
+<ul>
+<li>cp /etc/apt/sources.list{,.backup}</li>
+</ul>
+    </section>
+</article>
+
+      </main>
+      <footer>
+        <ul>
+          <li><a class="fa-brands fa-github" href="https://github.com/bendo"></a></li>
+          <li><a class="fa-brands fa-twitter" href="https://twitter.com/bendo1307"></a></li>
+          <li><a class="fa-brands fa-stack-overflow" href="https://stackoverflow.com/users/4345921/bendo"></a></li>
+          <li><a class="fa-brands fa-instagram" href="https://www.instagram.com/bendo.art"></a></li>
+        </ul>
+        <div>
+          <div id="toggle-theme" class="fa-solid fa-moon"></div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

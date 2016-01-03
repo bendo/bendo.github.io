@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="Personal blog about technical and IT related topics.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>bendo.github.io - Installing Arch Linux on ASUS Zenbook 14</title>
+    <link rel="stylesheet" href="../assets/css/default.css">
+    <link rel="stylesheet" href="../assets/css/syntax.css">
+    <link rel="stylesheet" href="../assets/css/all.css">
+    <link rel="stylesheet" href="../assets/fonts/DejaVuSans.ttf">
+    <script src="../assets/js/main.js"></script>
+  </head>
+  <body>
+    <div id="site">
+      <header>
+        <div class="logo">
+          <a href="../">..::bendo::..</a>
+        </div>
+        <nav>
+          <a href="../cheats.html">cheats</a>
+          <a href="../posts.html">posts</a>
+          <a href="../pages/projects.html">projects</a>
+          <a href="../pages/contact.html">contact</a>
+        </nav>
+      </header>
+      <main>
+        
+        
+        <h1>Installing Arch Linux on ASUS Zenbook 14</h1>
+        
+        
+        <article>
+    <section class="header">
+        Posted on May  1, 2019
+        <br />
+        
+            Tags: <a title="All pages tagged 'linux'." href="../tags/linux.html" rel="tag">linux</a>
+        
+        <br />
+        
+    </section>
+    <section>
+        <p>Recently I bought ASUS Zenbook 14” (UX433FN-A6023T) and I installed my favorit Arch linux
+on it.</p>
+<p><img src="../assets/imgs/asus.png" /></p>
+<h1 id="the-specs">The specs:</h1>
+<ul>
+<li>Intel(R) Core(TM) i7-8565U CPU @ 1.80GHz</li>
+<li>16GB RAM</li>
+<li>Intel Corporation UHD Graphics 620 (Whiskey Lake)</li>
+<li>NVIDIA Corporation GP108M [GeForce MX150]</li>
+<li>512 GB NvME SSD</li>
+<li>FHD IPS screen 1920×1080 14″</li>
+<li>4200mAh battery</li>
+<li>supposed ~8hrs of on-the-battery-time</li>
+<li>Price paid: 1200 EUR</li>
+</ul>
+<h1 id="checking-system">Checking system</h1>
+<p>Notebook came with preinstalled Windows home. So first thing I’ve done, was to
+check how everything works.</p>
+<p>This is the list of thing which works on windows and should work in linux as well:</p>
+<ul>
+<li>camera face recognition</li>
+<li>wifi speed down: 200Mbps / up: 12Mbps (this is speed which I pay for)</li>
+<li>touchpad / numpad</li>
+<li>keyboard backlight</li>
+<li>suspend when notebook closed</li>
+<li>Fn + Esc should lock Fn</li>
+<li>all Fn related keys</li>
+</ul>
+<h1 id="arch-linux-instalation">Arch Linux instalation</h1>
+<p>I have installed Arch linux and surprisingly a lot of stuff worked out of the box:</p>
+<ul>
+<li>wifi full speed</li>
+<li>keyboard backlight</li>
+<li>suspend to memory</li>
+<li>bluetooth</li>
+<li>touchpad (middle click was disabled)</li>
+<li>Intel graphic card</li>
+</ul>
+<p>But few things didn’t work:</p>
+<ul>
+<li>all Fn related keys</li>
+<li>touchpad middle click</li>
+<li>switching between Intel and GeForce graphic card</li>
+</ul>
+<p>So next thing which I done was to fix these few issues.</p>
+<h1 id="touchpad">Touchpad</h1>
+<p>I just enabled middle click adding <strong>xinput set-prop 14 305 1</strong> line to <strong>.xinitrc</strong> file.<br />
+<strong>xinput</strong> is a utility to configure and test X input devices, such as mouse,
+keyboards and touchpads.
+To list all xinput devices use: <strong>xinput list</strong>, where you can see that touchpad has id <strong>14</strong>.
+To list all properties of touchpad we use: <strong>xinput list-props 14</strong>, where we found that
+<strong>libinput Middle Emulation Enabled (305):</strong> is setted to <strong>0</strong>. We can enable middle click with:
+<strong>xinput set-prop 14 305 1</strong>. Thats it.
+Please check <a href="https://wiki.archlinux.org/index.php/Libinput">ArchWiki</a> for more details.</p>
+<h1 id="fn-related-keys">Fn related keys</h1>
+<p>Only one Fn key which work out of the box is <strong>F7</strong> which controll backlight of keyboard.<br />
+For rest of the keys I used <strong>xbindkeys</strong>.
+In home directory I’ve created file <strong>.xbindkeysrc</strong> with content:</p>
+<pre><code>&quot;pactl set-sink-volume @DEFAULT_SINK@ -1000&quot;
+    m:0x0 + c:122
+    XF86AudioLowerVolume
+
+&quot;pactl set-sink-volume @DEFAULT_SINK@ +1000&quot;
+    m:0x0 + c:123
+    XF86AudioRaiseVolume
+
+&quot;pactl set-sink-mute @DEFAULT_SINK@ toggle&quot;
+    m:0x0 + c:121
+    XF86AudioMute</code></pre>
+<p>In <strong>.xinitrc</strong> add one more line <strong>xbindkeys &amp;</strong> I didn’t set up dimming yet. Will do later.
+For more details check <a href="https://wiki.archlinux.org/index.php/Xbindkeys">ArchWiki</a>.</p>
+<h1 id="nvidia-geforce-and-intel">Nvidia GeForce and Intel</h1>
+<p>Intel graphic works out of the box. At least there is no issue to watch HD movies and so on.<br />
+But for better performance check <strong>NVIDIA Optimus</strong>. Right now there is no easy way to set
+up graphics to switch between them seemingly, so if you are not using as much graphic operation
+I think it is ok to stay with Intel.</p>
+    </section>
+</article>
+
+      </main>
+      <footer>
+        <ul>
+          <li><a class="fa-brands fa-github" href="https://github.com/bendo"></a></li>
+          <li><a class="fa-brands fa-twitter" href="https://twitter.com/bendo1307"></a></li>
+          <li><a class="fa-brands fa-stack-overflow" href="https://stackoverflow.com/users/4345921/bendo"></a></li>
+          <li><a class="fa-brands fa-instagram" href="https://www.instagram.com/bendo.art"></a></li>
+        </ul>
+        <div>
+          <div id="toggle-theme" class="fa-solid fa-moon"></div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
