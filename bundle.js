@@ -64,23 +64,21 @@
 
 	var _Hello2 = _interopRequireDefault(_Hello);
 
-	var _ActionTypes = __webpack_require__(165);
+	var _ActionTypes = __webpack_require__(167);
 
 	var _ActionTypes2 = _interopRequireDefault(_ActionTypes);
 
-	var _immutable = __webpack_require__(167);
+	var _immutable = __webpack_require__(169);
 
 	var _immutable2 = _interopRequireDefault(_immutable);
 
-	var _f = __webpack_require__(168);
+	var _f = __webpack_require__(170);
 
 	var _f2 = _interopRequireDefault(_f);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var model = window.model; //TODO: replace with dummy object
-
-	var phaseData = {};
+	var mainData = {};
 
 	var listeners = _immutable2.default.List();
 
@@ -94,7 +92,7 @@
 	    },
 
 	    getState: function getState() {
-	        return phaseData;
+	        return mainData;
 	    }
 	};
 
@@ -102,22 +100,14 @@
 	    listeners.map(_f2.default.call);
 	}
 
-	function updatePhase(data) {}
+	function updateData(data) {
+	    mainData[data.target.id] = data.target.value;
+	    _reactDom2.default.render(_react2.default.createElement(_Hello2.default, { store: store, dispatch: dispatch }), (0, _jquery2.default)('#react-app')[0]);
+	}
 
-	function deletePhase(data) {}
-
-	function savePhase(data) {
-	    console.log('savePhase:', data);
-	    /*$j.ajax({
-	        type: 'POST',
-	        url: '/ng/bim/savePhase.do?bcHandle=' + data.bcHandle + '&handle=' + data.handle,
-	        data: JSON.stringify(data),
-	        contentType: 'application/json; charset=utf-8',
-	        success: () => {
-	        },
-	        error: () => {
-	        }
-	    });*/
+	function deleteData() {
+	    mainData = { name: '', age: '', sex: '' };
+	    _reactDom2.default.render(_react2.default.createElement(_Hello2.default, { store: store, dispatch: dispatch }), (0, _jquery2.default)('#react-app')[0]);
 	}
 
 	function dispatch(_ref) {
@@ -125,30 +115,24 @@
 	    var data = _ref.data;
 
 	    switch (type) {
-	        case _ActionTypes2.default.UPDATE_PHASE:
-	            updatePhase(data);
+	        case _ActionTypes2.default.UPDATE_DATA:
+	            updateData(data);
 	            storeChanged();
 	            break;
-	        case _ActionTypes2.default.DELETE_PHASE:
-	            deletePhase(data);
-	            storeChanged();
-	            break;
-	        case _ActionTypes2.default.SAVE_PHASE:
-	            console.log('save!!!');
-	            savePhase(data);
+	        case _ActionTypes2.default.DELETE_DATA:
+	            deleteData(data);
 	            storeChanged();
 	            break;
 	    }
 	}
 
-	function loadPhases() {
-	    phaseData = JSON.parse(model);
-	    console.log('phaseData', phaseData);
+	function load() {
+	    mainData = { name: 'alice', age: '33', sex: 'woman' };
 	    _reactDom2.default.render(_react2.default.createElement(_Hello2.default, { store: store, dispatch: dispatch }), (0, _jquery2.default)('#react-app')[0]);
 	}
 
 	(0, _jquery2.default)(function () {
-	    loadPhases();
+	    load();
 	});
 
 /***/ },
@@ -30463,6 +30447,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _World = __webpack_require__(165);
+
+	var _World2 = _interopRequireDefault(_World);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -30484,9 +30472,14 @@
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
-	                'span',
+	                'div',
 	                null,
-	                'Hello world...'
+	                _react2.default.createElement(
+	                    'span',
+	                    null,
+	                    'Hello world!'
+	                ),
+	                _react2.default.createElement(_World2.default, { model: this.props.store.getState(), dispatch: this.props.dispatch })
 	            );
 	        }
 	    }]);
@@ -30502,28 +30495,145 @@
 
 	'use strict';
 
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 
-	var _keymirror = __webpack_require__(166);
+	var _react = __webpack_require__(6);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _ActionCreator = __webpack_require__(166);
+
+	var _ActionCreator2 = _interopRequireDefault(_ActionCreator);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var World = (function (_React$Component) {
+	    _inherits(World, _React$Component);
+
+	    function World(props) {
+	        _classCallCheck(this, World);
+
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(World).call(this, props));
+
+	        _this.handleUpdate = _this.handleUpdate.bind(_this);
+	        _this.handleDelete = _this.handleDelete.bind(_this);
+	        return _this;
+	    }
+
+	    _createClass(World, [{
+	        key: 'handleUpdate',
+	        value: function handleUpdate(e) {
+	            this.props.dispatch(_ActionCreator2.default.updateData(e.target, this.props.model));
+	        }
+	    }, {
+	        key: 'handleDelete',
+	        value: function handleDelete(e) {
+	            this.props.dispatch(_ActionCreator2.default.deleteData(e.target, this.props.model));
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement('input', { type: 'text',
+	                    value: this.props.model.name,
+	                    onChange: this.handleUpdate,
+	                    id: 'name' }),
+	                _react2.default.createElement('input', { type: 'text',
+	                    value: this.props.model.age,
+	                    onChange: this.handleUpdate,
+	                    id: 'age' }),
+	                _react2.default.createElement('input', { type: 'text',
+	                    value: this.props.model.sex,
+	                    onChange: this.handleUpdate,
+	                    id: 'sex' }),
+	                _react2.default.createElement(
+	                    'div',
+	                    null,
+	                    'Hello ',
+	                    this.props.model.name,
+	                    ', ',
+	                    this.props.model.age,
+	                    ', ',
+	                    this.props.model.sex
+	                ),
+	                _react2.default.createElement(
+	                    'div',
+	                    { onClick: this.handleDelete },
+	                    'Clear fields'
+	                )
+	            );
+	        }
+	    }]);
+
+	    return World;
+	})(_react2.default.Component);
+
+	exports.default = World;
+
+/***/ },
+/* 166 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _ActionTypes = __webpack_require__(167);
+
+	var _ActionTypes2 = _interopRequireDefault(_ActionTypes);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function event(type, data) {
+	    return { type: type, data: data };
+	}
+
+	exports.default = Object.freeze({
+	    deleteData: function deleteData() {
+	        return event(_ActionTypes2.default.DELETE_DATA, {});
+	    },
+	    updateData: function updateData(target, data) {
+	        return event(_ActionTypes2.default.UPDATE_DATA, { target: target, data: data });
+	    }
+	});
+
+/***/ },
+/* 167 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _keymirror = __webpack_require__(168);
 
 	var _keymirror2 = _interopRequireDefault(_keymirror);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = (0, _keymirror2.default)({
-	    SHOW_HIDE: null,
-	    EXPAND_COLLAPSE: null,
-	    SELECTION_CHANGED: null,
-	    DELETE_PHASE: null,
-	    SAVE_PHASE: null,
-	    UPDATE_PHASE: null,
-	    UPDATE_PHASE_DATE: null
+	    DELETE_DATA: null,
+	    UPDATE_DATA: null
 	});
 
 /***/ },
-/* 166 */
+/* 168 */
 /***/ function(module, exports) {
 
 	/**
@@ -30582,7 +30692,7 @@
 
 
 /***/ },
-/* 167 */
+/* 169 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -35569,7 +35679,7 @@
 	}));
 
 /***/ },
-/* 168 */
+/* 170 */
 /***/ function(module, exports) {
 
 	"use strict";
