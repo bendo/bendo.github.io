@@ -21,7 +21,7 @@ Installation of arch linux on raspberry pi.
    `# userdel -r alarm`
  
  - install some packages  
-   `# pacman -S sudo vim rxvt-unicode netctl htop mc python python-pip wget git base-devel`
+   `# pacman -S sudo vim rxvt-unicode netctl htop mc python python-pip python-psutil wget git base-devel`
  
  - allow group wheel to use sudo  
    `# visudo`
@@ -39,7 +39,11 @@ Installation of arch linux on raspberry pi.
    `# cp .Xresources ..`  
    `# vim .vimrc`  
    in vim `:PlugInstall`
-  
+   
+ - wifi
+   `sudo wifi-menu`
+   use profile, then enable profile
+   `sudo netctl enable istria`
  
 #### Unicorn HAT
  - clone repo and install
@@ -54,5 +58,26 @@ Installation of arch linux on raspberry pi.
    `# cd ../UnicornHat/`  
    `# sudo python setup.py build`  
    `# sudo python setup.py install`
- 
- 
+
+
+#### Scroll pHAT
+ - clone repo and install
+   `# git clone https://github.com/pimoroni/scroll-phat.git`
+   
+ - install
+   `# sudo pip install cffi`
+   `# sudo pip install smbus-cffi`
+   `# sudo pip install scrollphat`
+   `# sudo pip install requests`
+   `# sudo pip install psutil`
+   
+ - configure i2c
+   in `# /boot/config.txt` add: 
+   `dtparam=i2c_arm=on`
+   in `# /etc/modules-load.d/raspberrypi.conf` add: 
+   `i2c-dev`
+   `i2c-bcm2708`
+   then reboot
+   
+ - check if it works  
+   `# sudo i2cdetect -y 1`
