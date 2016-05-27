@@ -4,7 +4,8 @@ title: Pi
 permalink: /pi/
 ---
 
-Installation of arch linux on raspberry pi.
+Installation of arch linux on raspberry pi.  
+<https://wiki.archlinux.org/index.php/Raspberry_Pi>
 
 #### prepare sd card 
 <https://archlinuxarm.org/platforms/armv8/broadcom/raspberry-pi-3>
