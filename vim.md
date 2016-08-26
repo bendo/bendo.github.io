@@ -34,6 +34,7 @@ permalink: /vim/
   - **p P** &rarr; paste before/after cursor
   - **u ctrl+r** &rarr; undo and redo
   - **.** &rarr; repeat the previous edit command
+  - **>aB** &rarr; indent a Block
 
 
 #### Correcting Text
