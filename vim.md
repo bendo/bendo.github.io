@@ -17,8 +17,22 @@ permalink: /vim/
     cursor
   - **n N** &rarr; repeat the last find command forward/backward
   - **''** &rarr; jump back to where you just were
-  - **ctrl+o ctrl+i** move backward/forward through the jump history
+  - **ctrl+o ctrl+i** &rarr; move backward/forward through the jump history
+  - **{}** &rarr; move to the beginning/end of the paragraph
 
+#### Marking location
+  - **m**\<char\> &rarr; create mark \<char\> to the current location **ma**
+  - **\'**\<char\> &rarr; move to the line containing mark \<char\> **\'a**
+  - **\`**\<char\> &rarr; move to the precise location of mark \<char\> **\`a**
+
+#### Registers
+  - **\"**\<char\> command &rarr; create register \<char\> containing output of
+    command
+  - **\"ay/foo** &rarr; yanking a copy of the text from here to the next line
+    containing "foo" into **a** register
+  - **\"ap** &rarr; pastes a copy of the **a** register's content into the text
+    after cursor
+    
 #### Editing
   - **i a I A** &rarr; insert/append at/after cursor/beginning/end of line
   - **o O** &rarr; open new line below/above the current line
