@@ -20,6 +20,11 @@ permalink: /vim/
   - **ctrl+o ctrl+i** &rarr; move backward/forward through the jump history
   - **{}** &rarr; move to the beginning/end of the paragraph
 
+#### Moving screen
+  - **zz** &rarr; scroll the view, that cursor is at center
+  - **zt** &rarr; (top) scroll the view, that cursor is at top
+  - **zb** &rarr; (bottom) scroll the view, that cursor is at bottom
+
 #### Marking location
   - **m**\<char\> &rarr; create mark \<char\> to the current location **ma**
   - **\'**\<char\> &rarr; move to the line containing mark \<char\> **\'a**
@@ -65,13 +70,7 @@ permalink: /vim/
   
   The first thing I need to do is get my cursor anywhere inside the parentheses
   belonging to map(). The exact command I use depends on where I end up:
-  - If the cursor is just inside the open paren for map(), I could use “**cf)**”. This
-  corrects all text up to and including the next “**)**” on this line.
-  - Say the cursor is on the word “format”. I would do “**ci(**”. Vim will search
-  backward to find the first open paren, then search forward to find its match,
-  and correct the text between (but not including) those characters.
-  - Maybe my cursor was already closest to the word “cookies.” To break out of the
-  inner parentheses, I would need to add a count and do “**2ci(**”. This is almost
-  identical to the last example, except that the 2 is needed due to the nested
-  parentheses.
+  - If the cursor is just inside the open paren for map(), I could use “**cf)**”. This corrects all text up to and including the next “**)**” on this line.
+  - Say the cursor is on the word “format”. I would do “**ci(**”. Vim will search backward to find the first open paren, then search forward to find its match, and correct the text between (but not including) those characters.
+  - Maybe my cursor was already closest to the word “cookies.” To break out of the inner parentheses, I would need to add a count and do “**2ci(**”. This is almost identical to the last example, except that the 2 is needed due to the nested parentheses.
 
