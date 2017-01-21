@@ -7,6 +7,7 @@ permalink: /vim/
 #### Movement
   - **h j k l** &rarr; basic movement keys ... **10j**
   - **b w B W** &rarr; move back/forward by token/word
+  - **e E**     &rarr; move to end of the token/word
   - **_**       &rarr; jump to first character of line
   - **^**       &rarr; jump to first non-whitespace character of line 
   - **$**       &rarr; jump to end of the line
