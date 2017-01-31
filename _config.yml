@@ -8,9 +8,9 @@
 # Site settings
 title: bendo.github.io
 email: zdeno.osina@gmail.com
-description: > # this means to ignore newlines until "baseurl:"
-    all stuf which I have problem to remember it
+description: > #
+    all stuf which I have problem to remember 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://bendo.github.io" # the base hostname & protocol for your site
-twitter_username: xbendo
+twitter_username: zdeno_osina
 github_username:  bendo
