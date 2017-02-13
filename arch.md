@@ -62,7 +62,7 @@ generate the locals:
 first find the correct zone    
 `# ls /usr/share/zoneinfo/`  
 so right now it will be  
-`# ln -s /usr/share/zoneinfo/Europe/Berlin > /etc/localtime`  
+`# ln -s /usr/share/zoneinfo/Europe/Berlin /etc/localtime`  
 let's configure hardware clock  
 `# hwclock --systohc --utc`  
 hostname  
@@ -106,6 +106,9 @@ run this so arch knows about other distros:
 `# grub-mkconfig -o /boot/grub/grub.cfg`
 
 #### set up internet
+`# pacman -S dialog`  
+`# pacman -S netctl`  
+`# pacman -S wpa_supplicant`  
 
 #### let's reboot
 exit from chroot environment:  
@@ -117,6 +120,7 @@ and reboot
 
 #### after boot
 install some apps:  
+`# pacman -S i3`  
 `# pacman -S xorg`  
 `# pacman -S xorg-server`  
 `# pacman -S xorg-xinit`  
@@ -129,4 +133,5 @@ install some apps:
 `# pacman -S mplayer`  
 `# pacman -S mc`  
 `# pacman -S gedit`  
+`# pacman -S zathura`  
 copy [dotfiles](https://github.com/bendo/dotfiles) (.bashrc, .xinitrc ...)  
