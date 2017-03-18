@@ -44,8 +44,54 @@ Ctrl+p Ctrl+q &rarr; will detach from container
 is typo  
 `docker logs example` &rarr; lose command not found
 
-### Network
+### Networking
+`docker run --rm -ti -p 45678:45678 -p 45679:45679 --name echo-server
+ubuntu:14.04 bash` &rarr; -p opens port outside:inside  
 
+`docker run --rm -ti -p 45678 -p 45679 --name echo-server
+ubuntu:14.04 bash` &rarr; -p opens inside ports, outside ports will be choosen
+by docker &rarr;  with `docker port echo-server` we can see outside ports for this
+container... when we start new container it will have **different** outside ports  
+56780/tcp -> 0.0.0.0:32769  
+56789/tcp -> 0.0.0.0:32768  
+
+`docker port echo-server` &rarr; shows ports on echo-server container  
+`docker inspect echo-server` &rarr; shows some infos as well as IP address 
+
+`docker run -p outside-port:inside-port/protocol (tcp|udp)` &rarr; if we need
+to specify protocol
+
+#### Linking
+`docker run --rm -ti --name server ubuntu:14.04 bash` &rarr; server  
+`docker run --rm -ti --link server --name client ubuntu:14.04 bash` &rarr; client linked to server  
+
+on server we can run `nc -lp 1234` and on client `nc server 1234` &rarr; client
+is connected to server we can send some data...  
+
+**link can be break when containers restarts**
+
+#### Network
+`docker network create example` &rarr; creates network  
+`docker run --rm -ti --net=example --name server ubuntu:14.04 bash` &rarr; server  
+`docker run --rm -ti --link server --net=example --name client ubuntu:14.04 bash` &rarr; client linked to server  
+
+**link will not be broken when containers restarts**
+
+#### Images
+`docker images` &rarr; shows all local images  
+`docker commit bdeoe334wwd my-image-16:v1.3` &rarr; creates image with
+specified version
+
+- full name is `registry.com:port/organisation/image-name:version-tag`  
+
+`docker pull` &rarr; get the image &rarr; it is used by command `docker run`
+automatically  
+`docker rmi image-name` &rarr; removes the image
+
+#### Volumes
+- its about sharing the data between hosts or containers  
+- they can be persistent (lives after container is stopped) or temporary (data
+  is gone after containers stop)  
 
 
 ### Building docker images
