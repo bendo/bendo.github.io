@@ -1,0 +1,57 @@
+---
+layout: post
+title:  "Docker basics"
+date:   2017-02-18 01:00:00 +0100
+categories: docker
+---
+
+- first install `pacman -Sy docker`, then run `docker.service`
+
+### Images, containers
+`docker images` &rarr; shows all images  
+`docker run -ti ubuntu bash` &rarr; run bash in ubuntu image (creates container)  
+
+
+`docker ps` &rarr; shows running containers  
+`docker ps -a` &rarr; shows all containers  
+`docker ps -l` &rarr; shows latest container  
+&#8627; **EXIT CODE** &rarr; good for debuging  
+
+- Image is **FIXED**  
+
+IMAGE &rarr; `docker run` &rarr; RUNNING CONTAINER  
+STOPPED CONTANER &rarr; `docker commit` &rarr; NEW IMAGE  
+
+`docker commit some_cont new_img` &rarr; creates new image (new\_img) from
+container (some\_cont)  
+
+`--rm` &rarr; deletes container when it exits  
+`-ti` &rarr; terminal interactive  
+`docker run --rm -ti ubuntu bash -c "sleep 3; echo all done"`  
+`docker rm my_cont`&rarr; remove container  
+`docker run -d -ti ubuntu bash` &rarr; detached container  
+`docker attach cont_name` &rarr; atach to container  
+
+Ctrl+p Ctrl+q &rarr; will detach from container  
+
+`docker exec -ti my_cont bash` &rarr; execute another process in container my\_cont
+(in this case bash)  
+
+`docker kill` &rarr; will kill container  
+
+#### Logs
+`docker run --name example -d ubuntu bash -c "lose /etc/passwd"` &rarr; there
+is typo  
+`docker logs example` &rarr; lose command not found
+
+### Network
+
+
+
+### Building docker images
+
+
+### Under the hood
+
+
+
