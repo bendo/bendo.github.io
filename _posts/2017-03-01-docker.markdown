@@ -27,7 +27,7 @@ container (some\_cont)
 
 `--rm` &rarr; deletes container when it exits  
 `-ti` &rarr; terminal interactive  
-`--privileged` &rarr; when root access is needed
+`--privileged` &rarr; when root access is needed  
 `docker run --rm -ti ubuntu bash -c "sleep 3; echo all done"`  
 `docker rm my_cont`&rarr; remove container  
 `docker run -d -ti ubuntu bash` &rarr; detached container  
