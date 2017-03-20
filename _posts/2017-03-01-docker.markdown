@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Docker basics"
-date:   2017-02-18 01:00:00 +0100
+date:   2017-03-01 01:00:00 +0100
 categories: docker
 ---
 
@@ -27,6 +27,7 @@ container (some\_cont)
 
 `--rm` &rarr; deletes container when it exits  
 `-ti` &rarr; terminal interactive  
+`--privileged` &rarr; when root access is needed  
 `docker run --rm -ti ubuntu bash -c "sleep 3; echo all done"`  
 `docker rm my_cont`&rarr; remove container  
 `docker run -d -ti ubuntu bash` &rarr; detached container  
@@ -121,6 +122,8 @@ volume**
 - state is cached &rarr; so when you build second time and there was some
   download needed, it will be skiped  
 - each line is a call to docker run  
+
+`docker history image_name` &rarr; shows history of creating image
 
 simple `Dockerfile`
 ```
