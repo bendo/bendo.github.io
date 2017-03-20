@@ -20,6 +20,7 @@ permalink: /vim/
   - **''**               &rarr; jump back to where you just were
   - **ctrl+o ctrl+i**    &rarr; move backward/forward through the jump history
   - **{}**               &rarr; move to the beginning/end of the paragraph
+  - **()**               &rarr; move to the beginning/end of the sentence
 
 #### Moving screen
   - **zz** &rarr; scroll the view, that cursor is at center
@@ -55,7 +56,9 @@ permalink: /vim/
   - **o**\<esc\>    &rarr; add a blank line
   - **cw cW**       &rarr; correct token/world following the cursor
   - **cc**          &rarr; correct line by clearing and then entering insert mode
+  - **C**           &rarr; correct till end of the line
   - **dd**          &rarr; delete line
+  - **D**           &rarr; delete till end of the line - same as **d$**
   - **ct cf ci ca** &rarr; correct up to or including specific characters
   - **dt df di da** &rarr; delete up to or including specific characters
   - **s**           &rarr; delete character at the cursor ant then enter insert mode **5s**
@@ -65,7 +68,8 @@ permalink: /vim/
   - **u ctrl+r**    &rarr; undo and redo
   - **.**           &rarr; repeat the previous edit command
   - **>aB**         &rarr; indent a Block
-
+  - **r**           &rarr; replace one character
+  - **R**           &rarr; replace till the escape key is hit
 
 #### Correcting Text
   Combination with **c** or **d**
@@ -78,7 +82,7 @@ permalink: /vim/
   inside the map() with something else:
 
   `signal.map(count -> String.format(“%d cookies, ah ah ah”, count));`
-  
+
   The first thing I need to do is get my cursor anywhere inside the parentheses
   belonging to map(). The exact command I use depends on where I end up:
 
