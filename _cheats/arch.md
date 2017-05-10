@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Arch
-permalink: /arch/
+title: "Arch"
+desc: "Short guide to install Arch Linux."
 ---
 
 Short guide to install Arch Linux.

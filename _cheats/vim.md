@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Vim
-permalink: /vim/
+desc: Cheat sheet for Vim.
 ---
 
 #### Movement

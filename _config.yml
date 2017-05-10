@@ -9,8 +9,12 @@
 title: bendo.github.io
 email: zdeno.osina@gmail.com
 description: > #
-    all stuf which I have problem to remember 
+    my personal website
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://bendo.github.io" # the base hostname & protocol for your site
 twitter_username: zdeno_osina
 github_username:  bendo
+
+collections:
+    - projects
+    - cheats

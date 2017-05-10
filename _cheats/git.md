@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Git
-permalink: /git/
+desc: Cheat sheet for git.
 ---
 
  - **git config --global user.name "bendo"**

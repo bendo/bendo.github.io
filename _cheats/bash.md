@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Bash
-permalink: /bash/
+desc: Cheat sheet for bash.
 ---
 
 #### Command Editing Shortcuts

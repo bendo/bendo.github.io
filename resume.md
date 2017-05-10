@@ -1,7 +1,8 @@
 ---
 layout: page
-title: CV
-permalink: /cv/
+site: Resume
+title: Resume
+permalink: /resume/
 ---
 
 <div class="center-align">
