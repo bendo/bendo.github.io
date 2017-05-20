@@ -5,22 +5,14 @@ title: Projects
 permalink: /projects/
 ---
 
-
-<div class="projects">
-  {% for project in site.projects %}
-  <div class="project post">
-    <h2 class="project-title post-title">
-      <a href="{{ project.website }}">
-        {{ project.title }}
-      </a>
-    </h2>
-    <span class="project-tagline post-date">
-        {{ project.tagline }}
-    </span>
-
-    {{ project.content }}
+<script src="{{ site.baseurl }}/js/ajax.js"></script>
+<script src="{{ site.baseurl }}/js/github/github.js"></script>
+<script src="{{ site.baseurl }}/js/github/project-tiles.js"></script>
+<script src="{{ site.baseurl }}/js/github/load-projects.js"></script>
 
 
-  </div>
-  {% endfor %}
+<div class="loading">
+    <img src="{{ site.baseurl }}/css/images/spinner.svg"/>
 </div>
+
+<div class="projects"/>

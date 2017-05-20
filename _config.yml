@@ -13,8 +13,10 @@ description: > #
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://bendo.github.io" # the base hostname & protocol for your site
 twitter_username: zdeno_osina
-github_username:  bendo
+github_username: bendo
 
 collections:
-    - projects
     - cheats
+
+gems:
+    - jekyll-coffeescript # Support coffeescript
