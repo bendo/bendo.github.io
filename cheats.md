@@ -8,14 +8,12 @@ permalink: /cheats/
 
 <div class="cheats">
 
-  <p>Here you can find some cheat sheets and instalation guides.</p>
-  <ul class="post-list">
+  <p>Some cheat sheets and instalation guides.</p>
+  <ul>
     {% for cheat in site.cheats %}
       <li>
-        <h2>
-          <a class="post-link" href="{{ cheat.url | prepend: site.baseurl }}">{{ cheat.title }}</a>
-        </h2>
-        <p>{{ cheat.desc }}</p>
+          <a href="{{ cheat.url | prepend: site.baseurl }}">{{ cheat.title }}</a>
+          &rarr; {{ cheat.desc }}
       </li>
     {% endfor %}
   </ul>

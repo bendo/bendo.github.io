@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Pi
-desc: Guide to install Arch Linux on raspberry Pi. Plus installation of Unicorn HAT and Scroll pHAT.
+desc: Guide to install Arch Linux on raspberry Pi. Plus Unicorn HAT and Scroll pHAT.
 ---
 
 Installation of arch linux on raspberry pi.  
