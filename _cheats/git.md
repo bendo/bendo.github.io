@@ -46,38 +46,52 @@ desc: Cheat sheet for git.
 
 #### Branches and tags
  - **git branch -av** &rarr; list all existing branches
+ - **git branch** \<new-branch\> &rarr; create a new branch based on your current HEAD
+ - **git branch -d** \<branch\> &rarr; delete a local branch
  - **git checkout** \<branch\> &rarr; switch HEAD branch
+ - **git checkout \-\-track** \<remote/branch\> &rarr; create a new tracking branch based on a remote branch
  - **git tag** &rarr; lists all tags
  - **git tag** \<tag-name\> &rarr; make a current commit with a tag
  - **git tag -l 'v1.8.5*'**
  - **git tag -a v1.0 -m 'my version 1.0'** &rarr; create anotated tag
- - **git show v 1.0**
  - **git tag v1.4_lw** &rarr; create lightweight tag
  - **git tag -a v0.6 9cf84** &rarr; put tag to particullar commit
+ - **git show v 1.0**
  - **git push origin** \<tagname\> &rarr; push particullar tag
- - **git push origin --tags** &rarr; push all the tags
+ - **git push origin \-\-tags** &rarr; push all the tags
 
 #### Update and publish
  - **git remote** &rarr; lists the shortname of each remote
- - **git remote -v** &rarr; shows urls
- - **git remote add [shortname] [url]** &rarr; add remote
- - **git fetch [remote name]** &rarr; get data from remote (NOT MERGE)
- - **git fetch origin**
- - **git pull** &rarr; get data from remote and MERGE
- - **git push [remote name] [branch name]** &rarr; push to server
- - **git push origin master**
- - **git remote show [remote name]** &rarr; more info about remote
- - **git remote rename pb paul** &rarr; rename from pb to paul
- - **git remote rm paul** &rarr; remove branch
+ - **git remote -v** &rarr; list all currently configured remotes
+ - **git remote add** \<shortname\> \<url\> &rarr; add new remote repository
+ - **git remote show** \<remote\> &rarr; show info about a remote
+ - **git remote rename pb paul** &rarr; rename remote from pb to paul
+ - **git remote rm paul** &rarr; remove remote paul
+ - **git fetch** \<remote\> &rarr; get all changes from remote (BUT NOT MERGE)
+ - **git pull** &rarr; get all changes from remote and MERGE
+ - **git push** \<remote\> \<branch\> &rarr; publish local changes on a remote
+ - **git branch -dr** \<remote/branch\> &rarr; delete a branch on the remote
 
+#### Merge and rebase
+ - **git merge** \<branch\> &rarr; merge \<branch\> into your current HEAD
+ - **git rebase** \<branch\> &rarr; rebase your current HEAD onto \<branch\>
+ - **git rebase \-\-abort** &rarr; abort rebase
+ - **git rebase \-\-continue** &rarr; continue a rebase after resolving conflicts
+ - **git mergetool** &rarr; use your configured merge tool to solve conflicts
 
- - **git reset HEAD file** &rarr; unstage
- - **git checkout -- file** &rarr; revert changes on the file
+#### Undo
+ - **git checkout HEAD** \<file\> &rarr; discard local changes in a specific file
+ - **git revert** \<commit\> &rarr; revert a commit (by producing a new commit with contrary changes)
+ - **git reset \-\-hard HEAD** &rarr; discard all local changes in you working directory
+ - **git reset \-\-hard** \<commit\> &rarr; reset your HEAD pointer to a previous commit ...and discard all changes since then
+ - **git reset** \<commit\> &rarr; ...and preserve all changes as unstaged changes
+ - **git reset \-\-keep** \<commit\> &rarr; ...and preserve uncommitted local changes
 
+#### Config
  - **git config --global user.name "bendo"**
  - **git config --global user.email bendo@gmail.com**  
-   **global** &rarr; do configu a ~  
-   **system** &rarr; do etc  
-   **bez nicoho** &rarr; len do projektu  
- - **git config --list** &rarr; vypise nastavenia
- - **git config user.name** &rarr; vypise nastavene meno
+   **global** &rarr; write into config and ~
+   **system** &rarr; write into etc
+   **without anything** &rarr; write only to project
+ - **git config --list** &rarr; shows settings
+ - **git config user.name** &rarr; shows user name from settings
