@@ -13,7 +13,7 @@ desc: Cheat sheet for git.
  - **git status** &rarr; changed files in your working directory
  - **git status -s** &rarr; changed files in your working directory, short view
  - **git diff** &rarr; changes to tracked files
- - **git diff --staged** &rarr; changes to staged files
+ - **git diff \-\-staged** &rarr; changes to staged files
  - **git add .** &rarr; add all current changes from current directory down
  - **git add ..** &rarr; add all current changes from one directory up to down
  - **git add \-\-all** &rarr; add all current changes in whole repository
@@ -52,7 +52,6 @@ desc: Cheat sheet for git.
  - **git checkout \-\-track** \<remote/branch\> &rarr; create a new tracking branch based on a remote branch
  - **git tag** &rarr; lists all tags
  - **git tag** \<tag-name\> &rarr; make a current commit with a tag
- - **git tag -l 'v1.8.5*'**
  - **git tag -a v1.0 -m 'my version 1.0'** &rarr; create anotated tag
  - **git tag v1.4_lw** &rarr; create lightweight tag
  - **git tag -a v0.6 9cf84** &rarr; put tag to particullar commit
@@ -88,10 +87,10 @@ desc: Cheat sheet for git.
  - **git reset \-\-keep** \<commit\> &rarr; ...and preserve uncommitted local changes
 
 #### Config
- - **git config --global user.name "bendo"**
- - **git config --global user.email bendo@gmail.com**  
-   **global** &rarr; write into config and ~
-   **system** &rarr; write into etc
+ - **git config \-\-global user.name "bendo"**
+ - **git config \-\-global user.email bendo@gmail.com**  
+   **global** &rarr; write into config and ~  
+   **system** &rarr; write into etc  
    **without anything** &rarr; write only to project
- - **git config --list** &rarr; shows settings
+ - **git config \-\-list** &rarr; shows settings
  - **git config user.name** &rarr; shows user name from settings
