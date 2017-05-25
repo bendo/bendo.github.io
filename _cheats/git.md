@@ -19,10 +19,8 @@ desc: Cheat sheet for git.
  - **git add \-\-all** &rarr; add all current changes in whole repository
  - **git add -p** \<file\> &rarr; add some changes in \<file\> to the next
  - **git rm** \<file\> &rarr; remove \<file\> also from hard drive
- - **git rm \-\-cached** \<file\> &rarr; remove \<file\> only from repository
-   (stays on hard drive)
- - **git mv README README.md** &rarr; git rm README, git add README.md
-   commit
+ - **git rm \-\-cached** \<file\> &rarr; remove \<file\> only from repository (stays on hard drive)
+ - **git mv README README.md** &rarr; git rm README, git add README.md commit
  - **git commit -a** &rarr; commit all local changes in tracked files
  - **git commit** &rarr; commit previously staged changes
  - **git commit \-\-amend** &rarr; change the last commit
@@ -39,8 +37,8 @@ desc: Cheat sheet for git.
  - **git log \-\-since=2.weeks** &rarr; show all commits since two weeks
  - **git log \-\-until=3.weeks** &rarr; show all commits until three weeks
  - **git log \-\-author=**\<user\> &rarr; show all commits from \<user\>
- - **git log \-\-grep 'commit name'** &rarr; filter commits with the commit
-   name
+ - **git log \-\-grep 'commit name'** &rarr; filter commits with the commit name
+ - **git log origin/master..HEAD** &rarr; show commits which weren't pushed yet
  - **git log -Sfunction_name** &rarr; show all commits with this function in it
  - **git blame** \<file\> &rarr; who changed what and when in \<file\>
 
