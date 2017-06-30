@@ -71,11 +71,12 @@ desc: Cheat sheet for Vim.
   - **R**           &rarr; replace till the escape key is hit
 
 #### Indent
-  - **>>**          &rarr; indent a line to the right
-  - **<<**          &rarr; indent a line to the left
-  - **5<<**         &rarr; indent 5 lines to the left
-  - **>}**          &rarr; indent one paragraph to the right
-  - **>aB**         &rarr; indent a Block
+  - **\>\>**        &rarr; indent a line to the right
+  - **\<\<**        &rarr; indent a line to the left
+  - **5\<\<**       &rarr; indent 5 lines to the left
+  - **\>}**         &rarr; indent one paragraph to the right
+  - **=i}**         &rarr; auto indent everything inside a paragraph
+  - **\>aB**        &rarr; indent a Block
   - **==**          &rarr; auto indent a line
   - **gg=G**        &rarr; select whole file and autoindent
   - **ggvG=**       &rarr; select whole file and autoindent in visual mode
