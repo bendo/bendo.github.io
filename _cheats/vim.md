@@ -67,9 +67,18 @@ desc: Cheat sheet for Vim.
   - **p P**         &rarr; paste before/after cursor
   - **u ctrl+r**    &rarr; undo and redo
   - **.**           &rarr; repeat the previous edit command
-  - **>aB**         &rarr; indent a Block
   - **r**           &rarr; replace one character
   - **R**           &rarr; replace till the escape key is hit
+
+#### Indent
+  - **>>**          &rarr; indent a line to the right
+  - **<<**          &rarr; indent a line to the left
+  - **5<<**         &rarr; indent 5 lines to the left
+  - **>}**          &rarr; indent one paragraph to the right
+  - **>aB**         &rarr; indent a Block
+  - **==**          &rarr; auto indent a line
+  - **gg=G**        &rarr; select whole file and autoindent
+  - **ggvG=**       &rarr; select whole file and autoindent in visual mode
 
 #### Correcting Text
   Combination with **c** or **d**

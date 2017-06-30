@@ -5,9 +5,8 @@ desc: Cheat sheet for git.
 ---
 
 #### Create
- - **git init** &rarr; create a new local repository
- - **git clone ssh://user@domain.com/repo.git** &rarr; clone an existing
-   repository
+ - **git init** \<project\> &rarr; create a new directory \<project\> with git repository
+ - **git clone ssh://user@domain.com/repo.git** &rarr; clone an existing repository
 
 #### Local changes
  - **git status** &rarr; changed files in your working directory

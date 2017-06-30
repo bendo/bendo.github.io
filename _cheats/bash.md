@@ -48,3 +48,5 @@ desc: Cheat sheet for bash.
   - **!\*** – the previous command except for the last word (e.g. if you type ‘find some_file.txt /‘, then **!\*** would give you ‘find some\_file.txt‘)
   - **!\*:p** – print out what **!\*** would substitute
 
+##### Before perform any change make backup easy way
+cp /etc/apt/sources.list{,.backup}
