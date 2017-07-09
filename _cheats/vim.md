@@ -32,13 +32,18 @@ desc: Cheat sheet for Vim.
   - **\'**\<char\> &rarr; move to the line containing mark \<char\> **\'a**
   - **\`**\<char\> &rarr; move to the precise location of mark \<char\> **\`a**
 
+#### Macros
+  - **q**\<char\> command **q** &rarr; create macro \<char\> containing command
+  - **qa0vwhr\_jq**             &rarr; create macro **a** which in visual mode replace everything from begining of line to the first word with underscore
+  - **@**\<char\>               &rarr; use macro \<char\>
+  - **2@**\<char\>              &rarr; use macro \<char\> two times
+  - **@@**                      &rarr; use last macro
+  - :reg                        &rarr; shows all registers / macros
+
 #### Registers
-  - **\"**\<char\> command &rarr; create register \<char\> containing output of
-    command
-  - **\"ay/foo** &rarr; yanking a copy of the text from here to the next line
-    containing "foo" into **a** register
-  - **\"ap** &rarr; pastes a copy of the **a** register's content into the text
-    after cursor
+  - **\"**\<char\> command &rarr; create register \<char\> containing output of command
+  - **\"ay/foo**           &rarr; yanking a copy of the text from here to the next line containing "foo" into **a** register
+  - **\"ap**               &rarr; pastes a copy of the **a** register's content into the text after cursor
 
 #### Search
   - **/**\<char\> &rarr; search for \<char\> forwords
