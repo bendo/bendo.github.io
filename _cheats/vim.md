@@ -111,3 +111,9 @@ desc: Cheat sheet for Vim.
   - **gt**  &rarr; go to next tab
   - **gT**  &rarr; go to previous tab
   - **2gt** &rarr; go to second tab
+
+#### Explore file system
+  - **:e.**  &rarr; open file explorer at current working directory
+  - **:sp.** &rarr; open file explorer in split at current working directory
+  - **:vs.** &rarr; open file explorer in vertical split at current working directory
+  - **:Se**  &rarr; open file explorer in split at directory of current file
