@@ -38,6 +38,7 @@ desc: Cheat sheet for Vim.
   - **@**\<char\>               &rarr; use macro \<char\>
   - **2@**\<char\>              &rarr; use macro \<char\> two times
   - **@@**                      &rarr; use last macro
+  - VG:normal @\<char\>         &rarr; apply macro \<char\> on selected text in visual mode
   - :reg                        &rarr; shows all registers / macros
 
 #### Registers
