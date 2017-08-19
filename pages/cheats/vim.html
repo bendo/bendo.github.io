@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>bendo.github.io - Vim</title>
+        <link rel="stylesheet" href="../../css/default.css" />
+        <link rel="stylesheet" href="../../css/syntax.css" />
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <a href="../../">bendo.github.io</a>
+            </div>
+            <nav>
+                <a href="../../about.html">About</a>
+                <a href="../../cheats.html">Cheats</a>
+                <a href="../../pages/resume.html">Resume</a>
+                <a href="../../archive.html">Archive</a>
+            </nav>
+        </header>
+
+        <main role="main">
+            <h1>Vim</h1>
+            <article>
+    <section>
+        <h4 id="movement">Movement</h4>
+<ul>
+<li><strong>h j k l</strong> → basic movement keys … <strong>10j</strong></li>
+<li><strong>b w B W</strong> → move back/forward by token/word</li>
+<li><strong>e E</strong> → move to end of the token/word</li>
+<li><strong>f</strong>&lt;char&gt; → move to the &lt;char&gt;</li>
+<li><strong>_</strong> → jump to first character of line</li>
+<li><strong>^</strong> → jump to first non-whitespace character of line</li>
+<li><strong>$</strong> → jump to end of the line</li>
+<li><strong>ctrl+u ctrl+d</strong> → page up, page down</li>
+<li>&lt;line-number&gt;<strong>G</strong> → jump to a specific line number</li>
+<li><strong>H M L</strong> → move to the top/middle/bottom of the screen</li>
+<li><strong># *</strong> → find the previous/next occurrence of the token under the cursor</li>
+<li><strong>n N</strong> → repeat the last find command forward/backward</li>
+<li><strong>’’</strong> → jump back to where you just were</li>
+<li><strong>ctrl+o ctrl+i</strong> → move backward/forward through the jump history</li>
+<li><strong>{}</strong> → move to the beginning/end of the paragraph</li>
+<li><strong>()</strong> → move to the beginning/end of the sentence</li>
+</ul>
+<h4 id="moving-screen">Moving screen</h4>
+<ul>
+<li><strong>zz</strong> → scroll the view, that cursor is at center</li>
+<li><strong>zt</strong> → (top) scroll the view, that cursor is at top</li>
+<li><strong>zb</strong> → (bottom) scroll the view, that cursor is at bottom</li>
+</ul>
+<h4 id="marking-location">Marking location</h4>
+<ul>
+<li><strong>m</strong>&lt;char&gt; → create mark &lt;char&gt; to the current location <strong>ma</strong></li>
+<li><strong>'</strong>&lt;char&gt; → move to the line containing mark &lt;char&gt; <strong>'a</strong></li>
+<li><strong>`</strong>&lt;char&gt; → move to the precise location of mark &lt;char&gt; <strong>`a</strong></li>
+</ul>
+<h4 id="macros">Macros</h4>
+<ul>
+<li><strong>q</strong>&lt;char&gt; command <strong>q</strong> → create macro &lt;char&gt; containing command</li>
+<li><strong>qa0vwhr_jq</strong> → create macro <strong>a</strong> which in visual mode replace everything from begining of line to the first word with underscore</li>
+<li><strong>@</strong>&lt;char&gt; → use macro &lt;char&gt;</li>
+<li><strong>2@</strong>&lt;char&gt; → use macro &lt;char&gt; two times</li>
+<li><strong>@@</strong> → use last macro</li>
+<li>:reg → shows all registers / macros</li>
+</ul>
+<h4 id="registers">Registers</h4>
+<ul>
+<li><strong>&quot;</strong>&lt;char&gt; command → create register &lt;char&gt; containing output of command</li>
+<li><strong>&quot;ay/foo</strong> → yanking a copy of the text from here to the next line containing “foo” into <strong>a</strong> register</li>
+<li><strong>&quot;ap</strong> → pastes a copy of the <strong>a</strong> register’s content into the text after cursor</li>
+</ul>
+<h4 id="search">Search</h4>
+<ul>
+<li><strong>/</strong>&lt;char&gt; → search for &lt;char&gt; forwords</li>
+<li><strong>n</strong> → to go to next occurrence</li>
+<li><strong>N</strong> → to go to previous occurrence</li>
+<li><strong>ggn</strong> → to go to first occurrence</li>
+<li><strong>Gn</strong> → to go to last occurence</li>
+<li><strong>?</strong>&lt;char&gt; → search for &lt;char&gt; backwords</li>
+<li><strong>n</strong> → to go to previous occurrence</li>
+<li><strong>N</strong> → to go to next soccurrence</li>
+</ul>
+<h4 id="editing">Editing</h4>
+<ul>
+<li><strong>i a I A</strong> → insert/append at/after cursor/beginning/end of line</li>
+<li><strong>o O</strong> → open new line below/above the current line</li>
+<li><strong>o</strong>&lt;esc&gt; → add a blank line</li>
+<li><strong>cw cW</strong> → correct token/world following the cursor</li>
+<li><strong>cc</strong> → correct line by clearing and then entering insert mode</li>
+<li><strong>C</strong> → correct till end of the line</li>
+<li><strong>dd</strong> → delete line</li>
+<li><strong>D</strong> → delete till end of the line - same as <strong>d$</strong></li>
+<li><strong>ct cf ci ca</strong> → correct up to or including specific characters</li>
+<li><strong>dt df di da</strong> → delete up to or including specific characters</li>
+<li><strong>s</strong> → delete character at the cursor ant then enter insert mode <strong>5s</strong></li>
+<li><strong>yy</strong> → copy line</li>
+<li><strong>yw yW</strong> → copy token/word</li>
+<li><strong>p P</strong> → paste before/after cursor</li>
+<li><strong>u ctrl+r</strong> → undo and redo</li>
+<li><strong>.</strong> → repeat the previous edit command</li>
+<li><strong>r</strong> → replace one character</li>
+<li><strong>R</strong> → replace till the escape key is hit</li>
+</ul>
+<h4 id="indent">Indent</h4>
+<ul>
+<li><strong>&gt;&gt;</strong> → indent a line to the right</li>
+<li><strong>&lt;&lt;</strong> → indent a line to the left</li>
+<li><strong>5&lt;&lt;</strong> → indent 5 lines to the left</li>
+<li><strong>&gt;}</strong> → indent one paragraph to the right</li>
+<li><strong>=i}</strong> → auto indent everything inside a paragraph</li>
+<li><strong>&gt;aB</strong> → indent a Block</li>
+<li><strong>==</strong> → auto indent a line</li>
+<li><strong>gg=G</strong> → select whole file and autoindent</li>
+<li><strong>ggvG=</strong> → select whole file and autoindent in visual mode</li>
+</ul>
+<h4 id="correcting-text">Correcting Text</h4>
+<p>Combination with <strong>c</strong> or <strong>d</strong> - <strong>t</strong>&lt;char&gt; exclusive match: continue up to the next &lt;char&gt; on this line - <strong>f</strong>&lt;char&gt; inclusive match: continue up to the next &lt;char&gt; on this line - <strong>i</strong>&lt;char&gt; exclusive inner match: apply to the text bounded by &lt;char&gt; - <strong>a</strong>&lt;char&gt; inclusive inner match: apply to the text bounded by &lt;char&gt;</p>
+<p>Say that I have the code below, and I want to completely replace the code inside the map() with something else:</p>
+<p><code>signal.map(count -&gt; String.format(“%d cookies, ah ah ah”, count));</code></p>
+<p>The first thing I need to do is get my cursor anywhere inside the parentheses belonging to map(). The exact command I use depends on where I end up:</p>
+<ul>
+<li><p>If the cursor is just inside the open paren for map(), I could use “<strong>cf)</strong>”. This corrects all text up to and including the next “<strong>)</strong>” on this line.</p></li>
+<li><p>Say the cursor is on the word “format”. I would do “<strong>ci(</strong>”. Vim will search backward to find the first open paren, then search forward to find its match, and correct the text between (but not including) those characters.</p></li>
+<li><p>Maybe my cursor was already closest to the word “cookies.” To break out of the inner parentheses, I would need to add a count and do “<strong>2ci(</strong>”. This is almost identical to the last example, except that the 2 is needed due to the nested parentheses.</p></li>
+</ul>
+<h4 id="tabs">Tabs</h4>
+<ul>
+<li><strong>gt</strong> → go to next tab</li>
+<li><strong>gT</strong> → go to previous tab</li>
+<li><strong>2gt</strong> → go to second tab</li>
+</ul>
+<h4 id="explore-file-system">Explore file system</h4>
+<ul>
+<li><strong>:e.</strong> → open file explorer at current working directory</li>
+<li><strong>:sp.</strong> → open file explorer in split at current working directory</li>
+<li><strong>:vs.</strong> → open file explorer in vertical split at current working directory</li>
+<li><strong>:Se</strong> → open file explorer in split at directory of current file</li>
+</ul>
+    </section>
+</article>
+
+        </main>
+
+        <footer>
+            Site proudly generated by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+        </footer>
+    </body>
+</html>

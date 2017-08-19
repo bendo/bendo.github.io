@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>bendo.github.io - Arch</title>
+        <link rel="stylesheet" href="../../css/default.css" />
+        <link rel="stylesheet" href="../../css/syntax.css" />
+    </head>
+    <body>
+        <header>
+            <div class="logo">
+                <a href="../../">bendo.github.io</a>
+            </div>
+            <nav>
+                <a href="../../about.html">About</a>
+                <a href="../../cheats.html">Cheats</a>
+                <a href="../../pages/resume.html">Resume</a>
+                <a href="../../archive.html">Archive</a>
+            </nav>
+        </header>
+
+        <main role="main">
+            <h1>Arch</h1>
+            <article>
+    <section>
+        <p>Short guide to install Arch Linux.</p>
+<h4 id="boot-live-arch-distro">boot live arch distro</h4>
+<p><code># wifi-menu</code><br />
+<code># ping -c 3 www.tuke.sk</code></p>
+<h4 id="prepare-disks">prepare disks</h4>
+<p><code># cgdisk /dev/sda</code></p>
+<ul>
+<li>first partition 1007K - ef02 (BIOS Boot Partition)</li>
+<li>second partition 250G - 8300 (/root)</li>
+<li>third partition 4G - 8200 (swap)</li>
+</ul>
+<h4 id="create-file-system">create file system</h4>
+<p><code># mkfs.ext4 /dev/sda2</code><br />
+<code># mkswap /dev/sda3</code><br />
+<code># swapon /dev/sda3</code><br />
+let’s check<br />
+<code># lsblk /dev/sda</code></p>
+<h4 id="mount-the-root-partition">mount the root partition</h4>
+<p><code># mount /dev/sda2 /mnt</code></p>
+<h4 id="choose-mirror">choose mirror</h4>
+<p>choose the mirror closest to your location<br />
+copy the link of the locations closest to you and past it on top of the list<br />
+<code># vi /etc/pacman.d/mirrorlist</code></p>
+<h4 id="install-the-base-packages">install the base packages</h4>
+<p><code># pacstrap -i /mnt base base-devel</code></p>
+<h4 id="configure-fstab">configure fstab</h4>
+<p><code># genfstab -U -p /mnt &gt;&gt; /mnt/etc/fstab</code><br />
+let’s check<br />
+<code># vi /mnt/etc/fstab</code><br />
+chroot into your newly installed system to configure it<br />
+<code># arch-chroot /mnt</code></p>
+<h4 id="language-and-location-settings">language and location settings</h4>
+<p><code># vi /etc/locale.gen</code></p>
+<p>uncoment:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">en_US.UTF<span class="op">-</span><span class="dv">8</span>
+de_DE.UTF<span class="op">-</span><span class="dv">8</span>
+sk_SK.UTF<span class="op">-</span><span class="dv">8</span></code></pre></div>
+<p>generate the locals:<br />
+<code># locale-gen</code><br />
+<code># echo LANG=en_US.UTF-8 &gt; /etc/locale.conf</code><br />
+<code># export LANG=en_US.UTF-8</code></p>
+<h4 id="lets-set-the-time">let’s set the time</h4>
+<p>first find the correct zone<br />
+<code># ls /usr/share/zoneinfo/</code><br />
+so right now it will be<br />
+<code># ln -s /usr/share/zoneinfo/Europe/Berlin /etc/localtime</code><br />
+let’s configure hardware clock<br />
+<code># hwclock --systohc --utc</code><br />
+hostname<br />
+<code># echo shami &gt; /etc/hostname</code></p>
+<h4 id="configure-repositories">configure repositories</h4>
+<p>for 64bit system we need enable the appropriate repositories<br />
+<code># vi /etc/pacman.conf</code><br />
+uncoment the ‘multilib’ repo:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">[multilib]  
+Include <span class="op">=</span> <span class="op">/</span>etc<span class="op">/</span>pacman.d<span class="op">/</span>mirrorlist</code></pre></div>
+<p>now it’s the best time to update repositories<br />
+<code># pacman -Sy</code></p>
+<h4 id="create-users">create users</h4>
+<p>first let’s set up password for root<br />
+<code># passwd</code><br />
+now we will create new user<br />
+<code># useradd -m -g users -G wheel,storage,power -s /bin/bash bendo</code><br />
+let’s set him password<br />
+<code># passwd bendo</code><br />
+now we will give him sudo superpowers<br />
+<code># pacman -S sudo</code><br />
+probably sudo is already instaled<br />
+<code># EDITOR=vi visudo</code><br />
+uncoment this line<br />
+<code>%wheel ALL=(ALL) NOPASSWD: ALL</code><br />
+nice to have<br />
+<code># pacman -S bash-completion</code></p>
+<h4 id="install-boot-loader">install boot loader</h4>
+<p><code># pacman -S grub</code><br />
+<code># grub-install --target=i386-pc --recheck /dev/sda</code><br />
+for searching an another distros install<br />
+<code># pacman -S os-prober</code><br />
+run this so arch knows about other distros:<br />
+<code># grub-mkconfig -o /boot/grub/grub.cfg</code></p>
+<h4 id="set-up-internet">set up internet</h4>
+<p><code># pacman -S dialog</code><br />
+<code># pacman -S netctl</code><br />
+<code># pacman -S wpa_supplicant</code></p>
+<h4 id="lets-reboot">let’s reboot</h4>
+<p>exit from chroot environment:<br />
+<code># exit</code><br />
+unmount the root<br />
+<code># umount -R /mnt</code><br />
+and reboot<br />
+<code># reboot</code></p>
+<h4 id="after-boot">after boot</h4>
+<p>install some apps:<br />
+<code># pacman -S i3</code><br />
+<code># pacman -S xorg</code><br />
+<code># pacman -S xorg-server</code><br />
+<code># pacman -S xorg-xinit</code><br />
+<code># pacman -S vim</code><br />
+<code># pacman -S scrot</code><br />
+<code># pacman -S xloadimage</code><br />
+<code># pacman -S imagemagick</code><br />
+<code># pacman -S rxvt-unicode</code><br />
+<code># pacman -S dmenu</code><br />
+<code># pacman -S mplayer</code><br />
+<code># pacman -S mc</code><br />
+<code># pacman -S gedit</code><br />
+<code># pacman -S zathura</code><br />
+copy <a href="https://github.com/bendo/dotfiles">dotfiles</a> (.bashrc, .xinitrc …)</p>
+    </section>
+</article>
+
+        </main>
+
+        <footer>
+            Site proudly generated by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+        </footer>
+    </body>
+</html>
