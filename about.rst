@@ -14,4 +14,4 @@ At work I play with Java and at home with my wife and two kids. ♥
 In a spare time, when I find one, I like to play with haskell or IoT...
 to creates some robots and useless stuff. ☺
 
-I enjoy outdoor activities such as hiking, mount biking and climbing.
+I enjoy outdoor activities such as hiking, mountain biking and climbing.
