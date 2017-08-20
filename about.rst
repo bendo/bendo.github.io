@@ -1,17 +1,17 @@
 ---
-title: About
+title: About me
 ---
-Nullam imperdiet sodales orci vitae molestie. Nunc quam orci, pharetra a
-rhoncus vitae, eleifend id felis. Suspendisse potenti. Etiam vitae urna orci.
-Quisque pellentesque dignissim felis, egestas tempus urna luctus vitae. In hac
-habitasse platea dictumst. Morbi fringilla mattis odio, et mattis tellus
-accumsan vitae.
 
-1. Amamus Unicode 碁
-2. Interdum nex magna.
+My name is Zdenko Osina alias bendo and I'm a software developer, 
+born and grown in Slovakia, but currently living in Munich, DE.
 
-Vivamus eget mauris sit amet nulla laoreet lobortis. Nulla in diam elementum
-risus convallis commodo. Cras vehicula varius dui vitae facilisis. Proin
-elementum libero eget leo aliquet quis euismod orci vestibulum. Duis rhoncus
-lorem consequat tellus vestibulum aliquam. Quisque orci orci, malesuada porta
-blandit et, interdum nec magna.
+I got my degree in Software engineering at Technical University of Kosice.
+
+I'm very much into programming languages, functional programming and IoT.
+
+At work I play with Java and at home with my wife and two kids. ♥
+
+In a spare time, when I find one, I like to play with haskell or IoT...
+to creates some robots and useless stuff. ☺
+
+I enjoy outdoor activities such as hiking, mount biking and climbing.
