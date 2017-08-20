@@ -17,17 +17,23 @@ nav {
     text-align: right;
 }
 
-nav a {
+nav a, nav a:visited {
     color: #111111;
     margin-left: 12px;
 }
 
 a {
-    text-decoration: none;
+    color: #2a7ae2;
+    text-decoration: none
+}
+
+a:visited {
+    color: #1756a9
 }
 
 a:hover {
-    text-decoration: underline;
+    color: #111;
+    text-decoration: underline
 }
 
 footer {
