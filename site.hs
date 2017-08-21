@@ -38,6 +38,13 @@ main = hakyll $ do
             >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
 
+    match "pages/cheats/*" $ do
+        route $ setExtension "html"
+        compile $ pandocCompiler
+            >>= loadAndApplyTemplate "templates/cheat.html"    postCtx
+            >>= loadAndApplyTemplate "templates/default.html" postCtx
+            >>= relativizeUrls
+
     create ["archive.html"] $ do
         route idRoute
         compile $ do
@@ -52,6 +59,19 @@ main = hakyll $ do
                 >>= loadAndApplyTemplate "templates/default.html" archiveCtx
                 >>= relativizeUrls
 
+    create ["cheats.html"] $ do
+        route idRoute
+        compile $ do
+            cheats <- loadAll "pages/cheats/*"
+            let cheatCtx =
+                    listField "cheats" defaultContext (return cheats) `mappend`
+                    constField "title" "Cheats"                       `mappend`
+                    defaultContext
+
+            makeItem ""
+                >>= loadAndApplyTemplate "templates/cheats.html" cheatCtx
+                >>= loadAndApplyTemplate "templates/default.html" cheatCtx
+                >>= relativizeUrls
 
     match "index.html" $ do
         route idRoute
