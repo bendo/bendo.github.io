@@ -89,6 +89,10 @@ main = hakyll $ do
 
     match "templates/*" $ compile templateBodyCompiler
 
+    match "404.html" $ do
+        route idRoute
+        compile $ pandocCompiler
+            >>= loadAndApplyTemplate "templates/default.html" defaultContext
 
 --------------------------------------------------------------------------------
 postCtx :: Context String
