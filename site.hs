@@ -76,9 +76,9 @@ main = hakyll $ do
     match "index.html" $ do
         route idRoute
         compile $ do
-            posts <- recentFirst =<< loadAll "posts/*"
+            posts <- fmap (take 4) . recentFirst =<< loadAll "posts/*"
             let indexCtx =
-                    listField "posts" postCtx (return $ take 4 posts) `mappend`
+                    listField "posts" postCtx (return posts)          `mappend`
                     constField "title" "Home"                         `mappend`
                     defaultContext
 
