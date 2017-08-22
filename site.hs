@@ -1,17 +1,13 @@
 --------------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
-import           Data.Monoid (mappend)
+import           Data.Monoid ((<>))
 import           Hakyll
 
 
 --------------------------------------------------------------------------------
 main :: IO ()
 main = hakyll $ do
-    match "images/*" $ do
-        route   idRoute
-        compile copyFileCompiler
-
-    match "pdf/*" $ do
+    match ("images/*" .||. "pdf/*") $ do
         route   idRoute
         compile copyFileCompiler
 
@@ -50,8 +46,8 @@ main = hakyll $ do
         compile $ do
             posts <- recentFirst =<< loadAll "posts/*"
             let archiveCtx =
-                    listField "posts" postCtx (return posts) `mappend`
-                    constField "title" "Archives"            `mappend`
+                    listField "posts" postCtx (return posts) <>
+                    constField "title" "Archives" <>
                     defaultContext
 
             makeItem ""
@@ -64,8 +60,8 @@ main = hakyll $ do
         compile $ do
             cheats <- loadAll "pages/cheats/*"
             let cheatCtx =
-                    listField "cheats" defaultContext (return cheats) `mappend`
-                    constField "title" "Cheats"                       `mappend`
+                    listField "cheats" defaultContext (return cheats) <>
+                    constField "title" "Cheats" <>
                     defaultContext
 
             makeItem ""
@@ -78,8 +74,8 @@ main = hakyll $ do
         compile $ do
             posts <- fmap (take 4) . recentFirst =<< loadAll "posts/*"
             let indexCtx =
-                    listField "posts" postCtx (return posts)          `mappend`
-                    constField "title" "Home"                         `mappend`
+                    listField "posts" postCtx (return posts) <>
+                    constField "title" "Home" <>
                     defaultContext
 
             getResourceBody
@@ -97,5 +93,5 @@ main = hakyll $ do
 --------------------------------------------------------------------------------
 postCtx :: Context String
 postCtx =
-    dateField "date" "%B %e, %Y" `mappend`
+    dateField "date" "%B %e, %Y" <>
     defaultContext
