@@ -31,8 +31,10 @@
 <li><strong>b w B W</strong> → move back/forward by token/word</li>
 <li><strong>e E</strong> → move to end of the token/word</li>
 <li><strong>f</strong>&lt;char&gt; → move to the &lt;char&gt;</li>
+<li><strong>0</strong> → jump to first non-whitespace character of line</li>
 <li><strong>_</strong> → jump to first character of line</li>
-<li><strong>^</strong> → jump to first non-whitespace character of line</li>
+<li><strong>^</strong> → jump to first character of line</li>
+<li><strong>g_</strong> → jump to last non-whitespace character of line</li>
 <li><strong>$</strong> → jump to end of the line</li>
 <li><strong>ctrl+u ctrl+d</strong> → page up, page down</li>
 <li>&lt;line-number&gt;<strong>G</strong> → jump to a specific line number</li>
@@ -43,6 +45,9 @@
 <li><strong>ctrl+o ctrl+i</strong> → move backward/forward through the jump history</li>
 <li><strong>{}</strong> → move to the beginning/end of the paragraph</li>
 <li><strong>()</strong> → move to the beginning/end of the sentence</li>
+<li><strong>%</strong> → jump to the corresponding (, {, [</li>
+<li><strong>f</strong>&lt;char&gt; → move to next occurrence of the &lt;char&gt; on the line → <strong>,</strong> next <strong>;</strong> previous occurrence</li>
+<li><strong>t</strong>&lt;char&gt; → move just before the &lt;char&gt;</li>
 </ul>
 <h4 id="moving-screen">Moving screen</h4>
 <ul>
@@ -116,7 +121,11 @@
 <li><strong>ggvG=</strong> → select whole file and autoindent in visual mode</li>
 </ul>
 <h4 id="correcting-text">Correcting Text</h4>
-<p>Combination with <strong>c</strong> or <strong>d</strong> - <strong>t</strong>&lt;char&gt; exclusive match: continue up to the next &lt;char&gt; on this line - <strong>f</strong>&lt;char&gt; inclusive match: continue up to the next &lt;char&gt; on this line - <strong>i</strong>&lt;char&gt; exclusive inner match: apply to the text bounded by &lt;char&gt; - <strong>a</strong>&lt;char&gt; inclusive inner match: apply to the text bounded by &lt;char&gt;</p>
+<p>Combination with <strong>c</strong> or <strong>d</strong><br />
+- <strong>t</strong>&lt;char&gt; exclusive match: continue up to the next &lt;char&gt; on this line<br />
+- <strong>f</strong>&lt;char&gt; inclusive match: continue up to the next &lt;char&gt; on this line<br />
+- <strong>i</strong>&lt;char&gt; exclusive inner match: apply to the text bounded by &lt;char&gt;<br />
+- <strong>a</strong>&lt;char&gt; inclusive inner match: apply to the text bounded by &lt;char&gt;</p>
 <p>Say that I have the code below, and I want to completely replace the code inside the map() with something else:</p>
 <p><code>signal.map(count -&gt; String.format(“%d cookies, ah ah ah”, count));</code></p>
 <p>The first thing I need to do is get my cursor anywhere inside the parentheses belonging to map(). The exact command I use depends on where I end up:</p>
