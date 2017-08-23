@@ -8,8 +8,10 @@ desc: Cheat sheet for Vim.
   - **b w B W**          &rarr; move back/forward by token/word
   - **e E**              &rarr; move to end of the token/word
   - **f**\<char\>        &rarr; move to the \<char\>
+  - **0**                &rarr; jump to first non-whitespace character of line
   - **\_**               &rarr; jump to first character of line
-  - **^**                &rarr; jump to first non-whitespace character of line
+  - **^**                &rarr; jump to first character of line
+  - **g\_**              &rarr; jump to last non-whitespace character of line
   - **$**                &rarr; jump to end of the line
   - **ctrl+u ctrl+d**    &rarr; page up, page down
   - \<line-number\>**G** &rarr; jump to a specific line number
@@ -20,6 +22,9 @@ desc: Cheat sheet for Vim.
   - **ctrl+o ctrl+i**    &rarr; move backward/forward through the jump history
   - **{}**               &rarr; move to the beginning/end of the paragraph
   - **()**               &rarr; move to the beginning/end of the sentence
+  - **%**                &rarr; jump to the corresponding (, {, [
+  - **f**\<char\>        &rarr; move to next occurrence of the \<char\> on the line &rarr; **,** next **;** previous occurrence
+  - **t**\<char\>        &rarr; move just before the \<char\>
 
 #### Moving screen
   - **zz** &rarr; scroll the view, that cursor is at center
@@ -86,11 +91,11 @@ desc: Cheat sheet for Vim.
   - **ggvG=**       &rarr; select whole file and autoindent in visual mode
 
 #### Correcting Text
-  Combination with **c** or **d**
-  - **t**\<char\> exclusive match: continue up to the next \<char\> on this line
-  - **f**\<char\> inclusive match: continue up to the next \<char\> on this line
-  - **i**\<char\> exclusive inner match: apply to the text bounded by \<char\>
-  - **a**\<char\> inclusive inner match: apply to the text bounded by \<char\>
+  Combination with **c** or **d**  
+  - **t**\<char\> exclusive match: continue up to the next \<char\> on this line  
+  - **f**\<char\> inclusive match: continue up to the next \<char\> on this line  
+  - **i**\<char\> exclusive inner match: apply to the text bounded by \<char\>  
+  - **a**\<char\> inclusive inner match: apply to the text bounded by \<char\>  
 
   Say that I have the code below, and I want to completely replace the code
   inside the map() with something else:
