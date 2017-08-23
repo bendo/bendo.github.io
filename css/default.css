@@ -75,6 +75,10 @@ article .header {
     text-decoration: none;
 }
 
+.resume {
+    display: block;
+}
+
 @media all and (max-width: 649px) {
     body {
         margin: 20px;
@@ -97,16 +101,31 @@ article .header {
     .hs {
         float: none;
     }
+
+    .resume {
+        width: auto;
+        height: auto;
+    }
 }
 
 @media all and (min-width: 650px) {
     body {
         width: 600px;
     }
+
+    .resume {
+        width: 100%;
+        height: 818px;
+    }
 }
 
 @media all and (min-width: 800px) {
     body {
         width: 750px;
+    }
+
+    .resume {
+        width: 100%;
+        height: 1010px;
     }
 }
