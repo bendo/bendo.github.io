@@ -3,14 +3,11 @@ title: Pi
 desc: Guide to install Arch Linux on raspberry Pi. Plus Unicorn HAT and Scroll pHAT.
 ---
 
-Installation of arch linux on raspberry pi.  
-<https://wiki.archlinux.org/index.php/Raspberry_Pi>
+Installation of arch linux on [raspberry pi](https://wiki.archlinux.org/index.php/Raspberry_Pi).
 
-#### prepare sd card
-<https://archlinuxarm.org/platforms/armv8/broadcom/raspberry-pi-3>
+Preparation of [sd card](https://archlinuxarm.org/platforms/armv8/broadcom/raspberry-pi-3).
 
-
-#### prepare system after first boot
+### prepare system after first boot
  - change root password and update system  
    `# passwd`  
    `# pacman -Syu`
@@ -45,7 +42,7 @@ Installation of arch linux on raspberry pi.
    use profile, then enable profile  
    `sudo netctl enable istria`
 
-#### Unicorn HAT
+### Unicorn HAT
  - clone repo and install  
    `# git clone https://github.com/bendo/unicorn-hat.git`
 
@@ -60,7 +57,7 @@ Installation of arch linux on raspberry pi.
    `# sudo python setup.py install`
 
 
-#### Scroll pHAT
+### Scroll pHAT
  - clone repo and install  
    `# git clone https://github.com/pimoroni/scroll-phat.git`
 
