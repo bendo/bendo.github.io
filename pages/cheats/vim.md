@@ -8,9 +8,9 @@ desc: Cheat sheet for Vim.
   - **b w B W**          &rarr; move back/forward by token/word
   - **e E**              &rarr; move to end of the token/word
   - **f**\<char\>        &rarr; move to the \<char\>
-  - **0**                &rarr; jump to first non-whitespace character of line
-  - **\_**               &rarr; jump to first character of line
-  - **^**                &rarr; jump to first character of line
+  - **0**                &rarr; jump to first character of line
+  - **\_**               &rarr; jump to first non-whitespace character of line
+  - **^**                &rarr; jump to first non-whitespace character of line
   - **g\_**              &rarr; jump to last non-whitespace character of line
   - **$**                &rarr; jump to end of the line
   - **ctrl+u ctrl+d**    &rarr; page up, page down
