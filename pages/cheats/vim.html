@@ -147,6 +147,22 @@
 <li><strong>:vs.</strong> → open file explorer in vertical split at current working directory</li>
 <li><strong>:Se</strong> → open file explorer in split at directory of current file</li>
 </ul>
+<h4 id="visual-mode">Visual mode</h4>
+<ul>
+<li><strong>Ctrl + v</strong> → visual block</li>
+<li><strong>v</strong> → visual</li>
+<li><strong>vW</strong> → select word</li>
+<li><strong>vjjjJ</strong> → select three lines and join them to one</li>
+</ul>
+<h4 id="search-and-replace">Search and replace</h4>
+<ul>
+<li><strong>:%s/foo/bar/g</strong> → change each ‘foo’ to ‘bar’ in <strong>all lines</strong></li>
+<li><strong>:s/foo/bar/g</strong> → change each ‘foo’ to ‘bar’ in the <strong>current line only</strong>)</li>
+<li><strong>:%s/foo/bar/gc</strong> → change each ‘foo’ to ‘bar’, but <strong>ask for confirmation</strong> first</li>
+<li><strong>:%s/&lt;foo&gt;/bar/gc</strong> → change only whole words <strong>exactly matching</strong> ‘foo’ to ‘bar’</li>
+<li><strong>:%s/foo/bar/gci</strong> → change each ‘foo’ to ‘bar’ <strong>case insensitive</strong></li>
+<li><strong>:%s/foo/bar/gcI</strong> → change each ‘foo’ to ‘bar’ <strong>case sensitive</strong></li>
+</ul>
     </section>
 </article>
 
