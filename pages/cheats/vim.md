@@ -121,3 +121,17 @@ desc: Cheat sheet for Vim.
   - **:sp.** &rarr; open file explorer in split at current working directory
   - **:vs.** &rarr; open file explorer in vertical split at current working directory
   - **:Se**  &rarr; open file explorer in split at directory of current file
+
+#### Visual mode
+  - **Ctrl + v**     &rarr; visual block
+  - **v**            &rarr; visual
+  - **vW**           &rarr; select word
+  - **vjjjJ**        &rarr; select three lines and join them to one
+
+#### Search and replace
+  - **:%s/foo/bar/g**       &rarr; change each 'foo' to 'bar' in **all lines**
+  - **:s/foo/bar/g**        &rarr; change each 'foo' to 'bar' in the **current line only**)
+  - **:%s/foo/bar/gc**      &rarr; change each 'foo' to 'bar', but **ask for confirmation** first
+  - **:%s/\<foo\>/bar/gc**  &rarr; change only whole words **exactly matching** 'foo' to 'bar'
+  - **:%s/foo/bar/gci**     &rarr; change each 'foo' to 'bar' **case insensitive**
+  - **:%s/foo/bar/gcI**     &rarr; change each 'foo' to 'bar' **case sensitive**
