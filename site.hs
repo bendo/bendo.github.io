@@ -37,7 +37,7 @@ main = hakyll $ do
     match "pages/cheats/*" $ do
         route $ setExtension "html"
         compile $ pandocCompiler
-            >>= loadAndApplyTemplate "templates/cheat.html"    postCtx
+            >>= loadAndApplyTemplate "templates/cheat.html"   postCtx
             >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
 
@@ -65,7 +65,7 @@ main = hakyll $ do
                     defaultContext
 
             makeItem ""
-                >>= loadAndApplyTemplate "templates/cheats.html" cheatCtx
+                >>= loadAndApplyTemplate "templates/cheats.html"  cheatCtx
                 >>= loadAndApplyTemplate "templates/default.html" cheatCtx
                 >>= relativizeUrls
 
