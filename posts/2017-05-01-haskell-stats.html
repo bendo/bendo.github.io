@@ -34,7 +34,55 @@
         
     </section>
     <section>
-        <div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="ex">ghc</span> -O2 app.hs <span class="kw">&amp;&amp;</span> <span class="bu">time</span> ./app</code></pre></div>
+        <h3 id="gc-statistics">GC statistics</h3>
+<p>To check if garbage collection isn’t the problem.</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash">λ <span class="ex">ghc</span> -O2 app.hs <span class="kw">&amp;&amp;</span> <span class="bu">time</span> ./app +RTS -s</code></pre></div>
+<p>As we can see below. Our program used a maximum of 2 megabytes on the heap, and spent 0.9% of its time doing garbage collection. In total, 98.9% of the program’s running time was spent doing productive work.</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash">λ <span class="ex">ghc</span> -O2 003.hs <span class="kw">&amp;&amp;</span> <span class="bu">time</span> ./003 +RTS -s
+<span class="ex">6857</span>
+      <span class="ex">24</span>,873,640 bytes allocated in the heap
+          <span class="ex">14</span>,008 bytes copied during GC
+          <span class="ex">44</span>,504 bytes maximum residency (2 sample(s))
+          <span class="ex">29</span>,224 bytes maximum slop
+               <span class="ex">2</span> MB total memory in use (0 MB lost due to fragmentation)
+
+                                     <span class="ex">Tot</span> time (elapsed)  <span class="ex">Avg</span> pause  Max pause
+  <span class="ex">Gen</span>  0        22 colls,     0 par    0.001s   0.001s     0.0000s    0.0002s
+  <span class="ex">Gen</span>  1         2 colls,     0 par    0.000s   0.000s     0.0000s    0.0001s
+
+  <span class="ex">INIT</span>    time    0.000s  (  0.000s elapsed)
+  <span class="ex">MUT</span>     time    0.089s  (  0.090s elapsed)
+  <span class="ex">GC</span>      time    0.001s  (  0.001s elapsed)
+  <span class="ex">EXIT</span>    time    0.000s  (  0.000s elapsed)
+  <span class="ex">Total</span>   time    0.090s  (  0.091s elapsed)
+
+  <span class="ex">%GC</span>     time       0.9%  (0.9% elapsed)
+
+  <span class="ex">Alloc</span> rate    280,897,811 bytes per MUT second
+
+  <span class="ex">Productivity</span>  98.9% of total user, 98.9% of total elapsed
+
+
+<span class="ex">real</span>	0m0.094s
+<span class="ex">user</span>	0m0.088s
+<span class="ex">sys</span>	0m0.005s</code></pre></div>
+<h3 id="time-profiling">Time profiling</h3>
+<pre><code>λ ghc -O2 --make 003.hs -prof -fprof-auto -fprof-cafs -fforce-recomp
+[1 of 1] Compiling Main             ( 003.hs, 003.o )
+Linking 003 ...
+λ time ./003 +RTS -p
+6857
+
+real	0m0.126s
+user	0m0.124s
+sys	0m0.001s</code></pre>
+<p>If program run out of stack space then use flag, -K, to set a larger stack limit for our program.</p>
+<pre><code>λ time ./003 +RTS -p -K100M
+003: Most RTS options are disabled. Link with -rtsopts to enable them.
+
+real	0m0.008s
+user	0m0.000s
+sys	0m0.008s</code></pre>
     </section>
 </article>
 
