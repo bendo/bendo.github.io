@@ -75,6 +75,8 @@
 <li><strong>&quot;</strong>&lt;char&gt; command → create register &lt;char&gt; containing output of command</li>
 <li><strong>&quot;ay/foo</strong> → yanking a copy of the text from here to the next line containing “foo” into <strong>a</strong> register</li>
 <li><strong>&quot;ap</strong> → pastes a copy of the <strong>a</strong> register’s content into the text after cursor</li>
+<li><strong>&quot;+yw</strong> → copy to system’s clipboard</li>
+<li><strong>&quot;+p</strong> → paste from system’s clipboard</li>
 </ul>
 <h4 id="search">Search</h4>
 <ul>
@@ -162,6 +164,8 @@
 <li><strong>:%s/&lt;foo&gt;/bar/gc</strong> → change only whole words <strong>exactly matching</strong> ‘foo’ to ‘bar’</li>
 <li><strong>:%s/foo/bar/gci</strong> → change each ‘foo’ to ‘bar’ <strong>case insensitive</strong></li>
 <li><strong>:%s/foo/bar/gcI</strong> → change each ‘foo’ to ‘bar’ <strong>case sensitive</strong></li>
+<li><strong>:%s/foo//gn</strong> → show count number of matches of ‘foo’</li>
+<li><strong>:%s///gn</strong> → show count number of matches of last searched pattern (if * used on some word)</li>
 </ul>
     </section>
 </article>
