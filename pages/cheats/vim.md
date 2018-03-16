@@ -48,6 +48,8 @@ desc: Cheat sheet for Vim.
   - **\"**\<char\> command &rarr; create register \<char\> containing output of command
   - **\"ay/foo**           &rarr; yanking a copy of the text from here to the next line containing "foo" into **a** register
   - **\"ap**               &rarr; pastes a copy of the **a** register's content into the text after cursor
+  - **\"+yw**              &rarr; copy to system's clipboard
+  - **\"+p**               &rarr; paste from system's clipboard
 
 #### Search
   - **/**\<char\> &rarr; search for \<char\> forwords
@@ -135,3 +137,5 @@ desc: Cheat sheet for Vim.
   - **:%s/\<foo\>/bar/gc**  &rarr; change only whole words **exactly matching** 'foo' to 'bar'
   - **:%s/foo/bar/gci**     &rarr; change each 'foo' to 'bar' **case insensitive**
   - **:%s/foo/bar/gcI**     &rarr; change each 'foo' to 'bar' **case sensitive**
+  - **:%s/foo//gn**         &rarr; show count number of matches of 'foo'
+  - **:%s///gn**            &rarr; show count number of matches of last searched pattern (if \* used on some word)
