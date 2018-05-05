@@ -136,6 +136,11 @@
 <li><p>Say the cursor is on the word “format”. I would do “<strong>ci(</strong>”. Vim will search backward to find the first open paren, then search forward to find its match, and correct the text between (but not including) those characters.</p></li>
 <li><p>Maybe my cursor was already closest to the word “cookies.” To break out of the inner parentheses, I would need to add a count and do “<strong>2ci(</strong>”. This is almost identical to the last example, except that the 2 is needed due to the nested parentheses.</p></li>
 </ul>
+<p>Some usefull commands:<br />
+- <strong>dw</strong> → delete to the end of a word<br />
+- <strong>diw</strong> → delete the entire word at the cursor<br />
+- <strong>y4j</strong> → copy 4 lines<br />
+- <strong>cit</strong> → change the content inside an HTML tag</p>
 <h4 id="tabs">Tabs</h4>
 <ul>
 <li><strong>gt</strong> → go to next tab</li>
