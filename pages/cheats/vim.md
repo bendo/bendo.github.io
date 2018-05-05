@@ -113,6 +113,12 @@ desc: Cheat sheet for Vim.
 
   - Maybe my cursor was already closest to the word “cookies.” To break out of the inner parentheses, I would need to add a count and do “**2ci(**”. This is almost identical to the last example, except that the 2 is needed due to the nested parentheses.
 
+  Some usefull commands:  
+  - **dw** &rarr; delete to the end of a word  
+  - **diw** &rarr; delete the entire word at the cursor  
+  - **y4j** &rarr; copy 4 lines  
+  - **cit** &rarr; change the content inside an HTML tag  
+
 #### Tabs
   - **gt**  &rarr; go to next tab
   - **gT**  &rarr; go to previous tab
