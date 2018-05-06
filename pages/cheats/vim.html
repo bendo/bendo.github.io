@@ -37,6 +37,8 @@
 <li><strong>g_</strong> → jump to last non-whitespace character of line</li>
 <li><strong>$</strong> → jump to end of the line</li>
 <li><strong>ctrl+u ctrl+d</strong> → page up, page down</li>
+<li><strong>ctrl+y ctrl+e</strong> → scroll up, scroll down</li>
+<li><strong>ctrl+f ctrl+b</strong> → move forward/backward one screen</li>
 <li>&lt;line-number&gt;<strong>G</strong> → jump to a specific line number</li>
 <li><strong>H M L</strong> → move to the top/middle/bottom of the screen</li>
 <li><strong># *</strong> → find the previous/next occurrence of the token under the cursor</li>
@@ -46,8 +48,10 @@
 <li><strong>{}</strong> → move to the beginning/end of the paragraph</li>
 <li><strong>()</strong> → move to the beginning/end of the sentence</li>
 <li><strong>%</strong> → jump to the corresponding (, {, [</li>
-<li><strong>f</strong>&lt;char&gt; → move to next occurrence of the &lt;char&gt; on the line → <strong>,</strong> next <strong>;</strong> previous occurrence</li>
-<li><strong>t</strong>&lt;char&gt; → move just before the &lt;char&gt;</li>
+<li><strong>f</strong>&lt;char&gt; → move to next &lt;char&gt; on line → <strong>;</strong> next <strong>,</strong> previous occurrence</li>
+<li><strong>F</strong>&lt;char&gt; → move to previous &lt;char&gt; on line</li>
+<li><strong>t</strong>&lt;char&gt; → move before next &lt;char&gt; on line</li>
+<li><strong>T</strong>&lt;char&gt; → move before previous &lt;char&gt; on line</li>
 </ul>
 <h4 id="moving-screen">Moving screen</h4>
 <ul>
@@ -87,7 +91,7 @@
 <li><strong>Gn</strong> → to go to last occurence</li>
 <li><strong>?</strong>&lt;char&gt; → search for &lt;char&gt; backwords</li>
 <li><strong>n</strong> → to go to previous occurrence</li>
-<li><strong>N</strong> → to go to next soccurrence</li>
+<li><strong>N</strong> → to go to next occurrence</li>
 </ul>
 <h4 id="editing">Editing</h4>
 <ul>
@@ -139,8 +143,10 @@
 <p>Some usefull commands:<br />
 - <strong>dw</strong> → delete to the end of a word<br />
 - <strong>diw</strong> → delete the entire word at the cursor<br />
-- <strong>y4j</strong> → copy 4 lines<br />
-- <strong>cit</strong> → change the content inside an HTML tag</p>
+- <strong>cit</strong> → change the content inside an HTML tag<br />
+- <strong>cip</strong> → change the content inside a paragraph<br />
+- <strong>ci&quot;</strong> → change the content inside a “…”<br />
+- <strong>y4j</strong> → copy 4 lines</p>
 <h4 id="tabs">Tabs</h4>
 <ul>
 <li><strong>gt</strong> → go to next tab</li>
