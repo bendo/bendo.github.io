@@ -9,10 +9,10 @@ desc: Cheat sheet for Vim.
   - **e E**              &rarr; move to end of the token/word
   - **f**\<char\>        &rarr; move to the \<char\>
   - **0**                &rarr; jump to first character of line
-  - **\_**               &rarr; jump to first non-whitespace character of line
-  - **^**                &rarr; jump to first non-whitespace character of line
-  - **g\_**              &rarr; jump to last non-whitespace character of line
   - **$**                &rarr; jump to end of the line
+  - **^**                &rarr; jump to first non-whitespace character of line
+  - **\_**               &rarr; jump to first non-whitespace character of line
+  - **g\_**              &rarr; jump to last non-whitespace character of line
   - **ctrl+u ctrl+d**    &rarr; page up, page down
   - **ctrl+y ctrl+e**    &rarr; scroll up, scroll down
   - **ctrl+f ctrl+b**    &rarr; move forward/backward one screen
@@ -25,6 +25,7 @@ desc: Cheat sheet for Vim.
   - **{}**               &rarr; move to the beginning/end of the paragraph
   - **()**               &rarr; move to the beginning/end of the sentence
   - **%**                &rarr; jump to the corresponding (, {, [
+  - **10|**              &rarr; move to column 10
   - **f**\<char\>        &rarr; move to next \<char\> on line &rarr; **;** next **,** previous occurrence
   - **F**\<char\>        &rarr; move to previous \<char\> on line
   - **t**\<char\>        &rarr; move before next \<char\> on line
