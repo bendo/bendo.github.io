@@ -11,7 +11,7 @@ desc: Cheat sheet for Vim.
   - **0**                &rarr; jump to first character of line
   - **\_**               &rarr; jump to first non-whitespace character of line
   - **^**                &rarr; jump to first non-whitespace character of line
-  - **\g_**              &rarr; jump to last non-whitespace character of line
+  - **g\_**              &rarr; jump to last non-whitespace character of line
   - **$**                &rarr; jump to end of the line
   - **ctrl+u ctrl+d**    &rarr; page up, page down
   - **ctrl+y ctrl+e**    &rarr; scroll up, scroll down
@@ -122,7 +122,7 @@ desc: Cheat sheet for Vim.
   - **diw** &rarr; delete the entire word at the cursor  
   - **cit** &rarr; change the content inside an HTML tag  
   - **cip** &rarr; change the content inside a paragraph  
-  - **ci"** &rarr; change the content inside a "..."  
+  - **ci\"** &rarr; change the content inside a "..."  
   - **y4j** &rarr; copy 4 lines  
 
 #### Tabs
