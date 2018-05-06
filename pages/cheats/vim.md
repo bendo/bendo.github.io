@@ -11,9 +11,11 @@ desc: Cheat sheet for Vim.
   - **0**                &rarr; jump to first character of line
   - **\_**               &rarr; jump to first non-whitespace character of line
   - **^**                &rarr; jump to first non-whitespace character of line
-  - **g\_**              &rarr; jump to last non-whitespace character of line
+  - **\g_**              &rarr; jump to last non-whitespace character of line
   - **$**                &rarr; jump to end of the line
   - **ctrl+u ctrl+d**    &rarr; page up, page down
+  - **ctrl+y ctrl+e**    &rarr; scroll up, scroll down
+  - **ctrl+f ctrl+b**    &rarr; move forward/backward one screen
   - \<line-number\>**G** &rarr; jump to a specific line number
   - **H M L**            &rarr; move to the top/middle/bottom of the screen
   - **# &#42;**          &rarr; find the previous/next occurrence of the token under the cursor
@@ -23,8 +25,10 @@ desc: Cheat sheet for Vim.
   - **{}**               &rarr; move to the beginning/end of the paragraph
   - **()**               &rarr; move to the beginning/end of the sentence
   - **%**                &rarr; jump to the corresponding (, {, [
-  - **f**\<char\>        &rarr; move to next occurrence of the \<char\> on the line &rarr; **,** next **;** previous occurrence
-  - **t**\<char\>        &rarr; move just before the \<char\>
+  - **f**\<char\>        &rarr; move to next \<char\> on line &rarr; **;** next **,** previous occurrence
+  - **F**\<char\>        &rarr; move to previous \<char\> on line
+  - **t**\<char\>        &rarr; move before next \<char\> on line
+  - **T**\<char\>        &rarr; move before previous \<char\> on line
 
 #### Moving screen
   - **zz** &rarr; scroll the view, that cursor is at center
@@ -59,7 +63,7 @@ desc: Cheat sheet for Vim.
   - **Gn**        &rarr; to go to last occurence
   - **?**\<char\> &rarr; search for \<char\> backwords
   - **n**         &rarr; to go to previous occurrence
-  - **N**         &rarr; to go to next soccurrence
+  - **N**         &rarr; to go to next occurrence
 
 #### Editing
   - **i a I A**     &rarr; insert/append at/after cursor/beginning/end of line
@@ -116,8 +120,10 @@ desc: Cheat sheet for Vim.
   Some usefull commands:  
   - **dw** &rarr; delete to the end of a word  
   - **diw** &rarr; delete the entire word at the cursor  
-  - **y4j** &rarr; copy 4 lines  
   - **cit** &rarr; change the content inside an HTML tag  
+  - **cip** &rarr; change the content inside a paragraph  
+  - **ci"** &rarr; change the content inside a "..."  
+  - **y4j** &rarr; copy 4 lines  
 
 #### Tabs
   - **gt**  &rarr; go to next tab
