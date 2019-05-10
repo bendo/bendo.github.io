@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>bendo.github.io - Arch</title>
+        <title>bendo.github.io - Arch Linux Installation and Configuration on UEFI Machines</title>
         <link rel="stylesheet" href="../../css/default.css" />
         <link rel="stylesheet" href="../../css/syntax.css" />
     </head>
@@ -22,41 +22,47 @@
         </header>
 
         <main role="main">
-            <h1>Arch</h1>
+            <h1>Arch Linux Installation and Configuration on UEFI Machines</h1>
             <article>
     <section>
         <p>Short guide to install Arch Linux.</p>
-<h4 id="boot-live-arch-distro">boot live arch distro</h4>
+<h3 id="boot-live-arch-distro-and-connect-to-wifi">boot live arch distro and connect to wifi</h3>
 <p><code># wifi-menu</code><br />
 <code># ping -c 3 www.tuke.sk</code></p>
-<h4 id="prepare-disks">prepare disks</h4>
-<p><code># cgdisk /dev/sda</code></p>
+<h3 id="prepare-disks">prepare disks</h3>
+<p><code># cgdisk /dev/nvme0n1</code></p>
 <ul>
-<li>first partition 1007K - ef02 (BIOS Boot Partition)</li>
-<li>second partition 250G - 8300 (/root)</li>
-<li>third partition 4G - 8200 (swap)</li>
+<li>300M - EFI System - ef00</li>
+<li>460G - Linux filesystem - 8300</li>
+<li>16G - Linux swap - 8200</li>
 </ul>
-<h4 id="create-file-system">create file system</h4>
-<p><code># mkfs.ext4 /dev/sda2</code><br />
-<code># mkswap /dev/sda3</code><br />
-<code># swapon /dev/sda3</code><br />
+<h3 id="create-file-system">create file system</h3>
+<p><code># mkfs.fat -F32 /dev/nvme0n1p1</code><br />
+<code># mkfs.ext4 /dev/nvme0n1p2</code><br />
+<code># mkswap /dev/nvme0n1p3</code><br />
+<code># swapon /dev/nvme0n1p3</code><br />
 let’s check<br />
-<code># lsblk /dev/sda</code></p>
-<h4 id="mount-the-root-partition">mount the root partition</h4>
-<p><code># mount /dev/sda2 /mnt</code></p>
-<h4 id="choose-mirror">choose mirror</h4>
+<code># lsblk /dev/nvme0n1</code></p>
+<h3 id="mount-the-root-partition">mount the root partition</h3>
+<p><code># mount /dev/nvme0n1p2 /mnt</code></p>
+<h3 id="choose-mirror">choose mirror</h3>
 <p>choose the mirror closest to your location<br />
 copy the link of the locations closest to you and past it on top of the list<br />
 <code># vi /etc/pacman.d/mirrorlist</code></p>
-<h4 id="install-the-base-packages">install the base packages</h4>
+<p>enable Arch Multilib support for the live system by uncommenting the following lines from <code>/etc/pacman.conf</code> file:</p>
+<pre><code>[multilib]
+Include = /etc/pacman.d/mirrorlist</code></pre>
+<h3 id="install-the-base-packages">install the base packages</h3>
 <p><code># pacstrap -i /mnt base base-devel</code></p>
-<h4 id="configure-fstab">configure fstab</h4>
+<p>if there is issue with signiture of some packages run:<br />
+<code># pacman -Sy archlinux-keyring</code></p>
+<h3 id="configure-fstab">configure fstab</h3>
 <p><code># genfstab -U -p /mnt &gt;&gt; /mnt/etc/fstab</code><br />
 let’s check<br />
-<code># vi /mnt/etc/fstab</code><br />
+<code># cat /mnt/etc/fstab</code><br />
 chroot into your newly installed system to configure it<br />
 <code># arch-chroot /mnt</code></p>
-<h4 id="language-and-location-settings">language and location settings</h4>
+<h3 id="language-and-location-settings">language and location settings</h3>
 <p><code># vi /etc/locale.gen</code></p>
 <p>uncoment:</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">en_US.UTF<span class="op">-</span><span class="dv">8</span>
@@ -66,7 +72,7 @@ sk_SK.UTF<span class="op">-</span><span class="dv">8</span></code></pre></div>
 <code># locale-gen</code><br />
 <code># echo LANG=en_US.UTF-8 &gt; /etc/locale.conf</code><br />
 <code># export LANG=en_US.UTF-8</code></p>
-<h4 id="lets-set-the-time">let’s set the time</h4>
+<h3 id="lets-set-the-time">let’s set the time</h3>
 <p>first find the correct zone<br />
 <code># ls /usr/share/zoneinfo/</code><br />
 so right now it will be<br />
@@ -75,7 +81,7 @@ let’s configure hardware clock<br />
 <code># hwclock --systohc --utc</code><br />
 hostname<br />
 <code># echo shami &gt; /etc/hostname</code></p>
-<h4 id="configure-repositories">configure repositories</h4>
+<h3 id="configure-repositories">configure repositories</h3>
 <p>for 64bit system we need enable the appropriate repositories<br />
 <code># vi /etc/pacman.conf</code><br />
 uncoment the ‘multilib’ repo:</p>
@@ -83,11 +89,11 @@ uncoment the ‘multilib’ repo:</p>
 Include <span class="op">=</span> <span class="op">/</span>etc<span class="op">/</span>pacman.d<span class="op">/</span>mirrorlist</code></pre></div>
 <p>now it’s the best time to update repositories<br />
 <code># pacman -Sy</code></p>
-<h4 id="create-users">create users</h4>
+<h3 id="create-users">create users</h3>
 <p>first let’s set up password for root<br />
 <code># passwd</code><br />
 now we will create new user<br />
-<code># useradd -m -g users -G wheel,storage,power -s /bin/bash bendo</code><br />
+<code># useradd -mg users -G wheel,storage,power -s /bin/bash bendo</code><br />
 let’s set him password<br />
 <code># passwd bendo</code><br />
 now we will give him sudo superpowers<br />
@@ -98,27 +104,26 @@ uncoment this line<br />
 <code>%wheel ALL=(ALL) NOPASSWD: ALL</code><br />
 nice to have<br />
 <code># pacman -S bash-completion</code></p>
-<h4 id="install-boot-loader">install boot loader</h4>
-<p><code># pacman -S grub</code><br />
-<code># grub-install --target=i386-pc --recheck /dev/sda</code><br />
-for searching an another distros install<br />
-<code># pacman -S os-prober</code><br />
-run this so arch knows about other distros:<br />
+<h3 id="install-boot-loader">install boot loader</h3>
+<p><code># pacman -S grub efibootmgr dosfstools os-prober mtools</code><br />
+<code># mkdir /boot/EFI</code><br />
+<code># mount /dev/nvme0n1p1 /boot/EFI  #Mount FAT32 EFI partition</code><br />
+<code># grub-install --target=x86_64-efi  --bootloader-id=grub_uefi --recheck</code><br />
 <code># grub-mkconfig -o /boot/grub/grub.cfg</code></p>
-<h4 id="set-up-internet">set up internet</h4>
+<h3 id="set-up-internet">set up internet</h3>
 <p><code># pacman -S dialog</code><br />
 <code># pacman -S netctl</code><br />
 <code># pacman -S wpa_supplicant</code></p>
-<h4 id="lets-reboot">let’s reboot</h4>
+<h3 id="lets-reboot">let’s reboot</h3>
 <p>exit from chroot environment:<br />
 <code># exit</code><br />
 unmount the root<br />
 <code># umount -R /mnt</code><br />
 and reboot<br />
 <code># reboot</code></p>
-<h4 id="after-boot">after boot</h4>
+<h3 id="after-boot">after boot</h3>
+<p>for <code>reboot</code> without sudo install <code>polkit</code></p>
 <p>install some apps:<br />
-<code># pacman -S i3</code><br />
 <code># pacman -S xorg</code><br />
 <code># pacman -S xorg-server</code><br />
 <code># pacman -S xorg-xinit</code><br />
@@ -131,8 +136,13 @@ and reboot<br />
 <code># pacman -S mplayer</code><br />
 <code># pacman -S mc</code><br />
 <code># pacman -S gedit</code><br />
-<code># pacman -S zathura</code><br />
-copy <a href="https://github.com/bendo/dotfiles">dotfiles</a> (.bashrc, .xinitrc …)</p>
+<code># pacman -S zathura</code></p>
+<p>aur:<br />
+<code>google-chrome, ttf-font-awesome-4, xbanish, xkb-switch, spotify, boostnote</code></p>
+<p>to sync time:<br />
+<code>ntp</code> -&gt; start and enable <code>ntpd</code></p>
+<p>check: <code>.xinitrc, bin/status-keyboard, bin/status-vol, .xmobarrc, .vimrc</code></p>
+<p>copy <a href="https://github.com/bendo/dotfiles">dotfiles</a> (.bashrc, .xinitrc …)</p>
     </section>
 </article>
 
