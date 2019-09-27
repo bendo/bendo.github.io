@@ -31,29 +31,33 @@
 <li><strong>h j k l</strong> → basic movement keys … <strong>10j</strong></li>
 <li><strong>b w B W</strong> → move back/forward by token/word</li>
 <li><strong>e E</strong> → move to end of the token/word</li>
-<li><strong>f</strong>&lt;char&gt; → move to the &lt;char&gt;</li>
 <li><strong>0</strong> → jump to first character of line</li>
 <li><strong>$</strong> → jump to end of the line</li>
 <li><strong>^</strong> → jump to first non-whitespace character of line</li>
 <li><strong>_</strong> → jump to first non-whitespace character of line</li>
 <li><strong>g_</strong> → jump to last non-whitespace character of line</li>
-<li><strong>ctrl+u ctrl+d</strong> → page up, page down</li>
-<li><strong>ctrl+y ctrl+e</strong> → scroll up, scroll down</li>
-<li><strong>ctrl+f ctrl+b</strong> → move forward/backward one screen</li>
-<li>&lt;line-number&gt;<strong>G</strong> → jump to a specific line number</li>
+<li><strong>ctrl+u ctrl+d</strong> → scroll up/down half page</li>
+<li><strong>ctrl+y ctrl+e</strong> → scroll up/down line by line</li>
+<li><strong>ctrl+b ctrl+f</strong> → scroll up/down full page</li>
 <li><strong>H M L</strong> → move to the top/middle/bottom of the screen</li>
-<li><strong># *</strong> → find the previous/next occurrence of the token under the cursor</li>
-<li><strong>n N</strong> → repeat the last find command forward/backward</li>
 <li><strong>’’</strong> → jump back to where you just were</li>
 <li><strong>ctrl+o ctrl+i</strong> → move backward/forward through the jump history</li>
 <li><strong>{}</strong> → move to the beginning/end of the paragraph</li>
 <li><strong>()</strong> → move to the beginning/end of the sentence</li>
 <li><strong>%</strong> → jump to the corresponding (, {, [</li>
+<li><strong>50%</strong> → jump to the line at the 50% of the file</li>
+<li><strong>:42</strong> → jump to the line 42</li>
+<li><strong>42G</strong> → jump to the line 42</li>
 <li><strong>10|</strong> → move to column 10</li>
 <li><strong>f</strong>&lt;char&gt; → move to next &lt;char&gt; on line → <strong>;</strong> next <strong>,</strong> previous occurrence</li>
 <li><strong>F</strong>&lt;char&gt; → move to previous &lt;char&gt; on line</li>
 <li><strong>t</strong>&lt;char&gt; → move before next &lt;char&gt; on line</li>
 <li><strong>T</strong>&lt;char&gt; → move before previous &lt;char&gt; on line</li>
+</ul>
+<h4 id="movement-in-insert-mode">Movement in insert mode</h4>
+<ul>
+<li><strong>shift+right arrow</strong> → go to the right, word by word</li>
+<li><strong>shift+left arrow</strong> → go to the left, word by word</li>
 </ul>
 <h4 id="moving-screen">Moving screen</h4>
 <ul>
@@ -85,15 +89,21 @@
 <li><strong>&quot;+p</strong> → paste from system’s clipboard</li>
 </ul>
 <h4 id="search">Search</h4>
+<p>To search for similar word under the cursor type <strong>/</strong> then press <strong>ctrl-r</strong> and <strong>ctrl-w</strong> ← this will copy the word under the cursor to command line. Now you can edit it and press <strong>enter</strong>. To return to your previous possition hit <strong>ctrl-o</strong>.</p>
 <ul>
 <li><strong>/</strong>&lt;char&gt; → search for &lt;char&gt; forwords</li>
+<li><strong>/</strong> → repeat the last search</li>
+<li><strong>5/pattern</strong> → search for fifth occurrence of the pattern</li>
 <li><strong>n</strong> → to go to next occurrence</li>
 <li><strong>N</strong> → to go to previous occurrence</li>
 <li><strong>ggn</strong> → to go to first occurrence</li>
-<li><strong>Gn</strong> → to go to last occurence</li>
+<li><strong>GN</strong> → to go to last occurrence</li>
 <li><strong>?</strong>&lt;char&gt; → search for &lt;char&gt; backwords</li>
 <li><strong>n</strong> → to go to previous occurrence</li>
 <li><strong>N</strong> → to go to next occurrence</li>
+<li><strong># *</strong> → find the previous/next occurrence of the exact word under the cursor (search → search)</li>
+<li><strong>g# g*</strong> → find the previous/next occurrence of the word under the cursor (search → searching)</li>
+<li><strong>6*</strong> → search for sixth occurrence of the current word under the cursor</li>
 </ul>
 <h4 id="editing">Editing</h4>
 <ul>
@@ -149,6 +159,12 @@
 - <strong>cip</strong> → change the content inside a paragraph<br />
 - <strong>ci&quot;</strong> → change the content inside a “…”<br />
 - <strong>y4j</strong> → copy 4 lines</p>
+<h4 id="working-with-files">Working with files</h4>
+<ul>
+<li><strong>vim file.txt</strong> → open file test.txt</li>
+<li><strong>vim</strong> :e test.txt → open file test.txt from vim</li>
+<li><strong>vim</strong> :wq test.txt → save as test.txt</li>
+</ul>
 <h4 id="tabs">Tabs</h4>
 <ul>
 <li><strong>gt</strong> → go to next tab</li>
