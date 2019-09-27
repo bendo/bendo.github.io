@@ -1,21 +1,13 @@
-pre,code {
-    font-size: 15px;
-    border: 1px solid #cecece;
-    border-radius: 3px;
-    background-color: #eef;
-}
-
 code {
-    padding: 1px 5px;
+    font-size: 13px;
+    background-color: rgb(250,250,250);
+    border: 1px solid rgb(200,200,200);
+    padding: 2px 4px;
 }
 
-pre {
-    padding: 8px 12px;
-    overflow-x: auto
-}
-
-pre>code {
-    border: 0;
-    padding-right: 0;
-    padding-left: 0
+pre code {
+    display: block;
+    padding: 5px 10px;
+    margin-bottom: 1em;
+    overflow-x:auto;
 }

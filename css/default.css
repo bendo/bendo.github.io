@@ -4,6 +4,7 @@ body {
     background-color: #fdfdfd;
     font-size: 16px;
     margin: 0px auto 0px auto;
+    line-height: 24px;
 }
 
 header {
@@ -51,6 +52,7 @@ footer {
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: 400;
+    margin: 20px 0 5px 0;
 }
 
 h1 {
@@ -59,6 +61,14 @@ h1 {
 
 h2 {
     font-size: 20px;
+}
+
+ul {
+    margin: 0;
+}
+
+p {
+    margin: 8px 0;
 }
 
 article .header {
