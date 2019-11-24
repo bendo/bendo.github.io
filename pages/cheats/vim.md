@@ -7,29 +7,32 @@ desc: Cheat sheet for Vim.
   - **h j k l**          &rarr; basic movement keys ... **10j**
   - **b w B W**          &rarr; move back/forward by token/word
   - **e E**              &rarr; move to end of the token/word
-  - **f**\<char\>        &rarr; move to the \<char\>
   - **0**                &rarr; jump to first character of line
   - **$**                &rarr; jump to end of the line
   - **^**                &rarr; jump to first non-whitespace character of line
   - **\_**               &rarr; jump to first non-whitespace character of line
   - **g\_**              &rarr; jump to last non-whitespace character of line
-  - **ctrl+u ctrl+d**    &rarr; page up, page down
-  - **ctrl+y ctrl+e**    &rarr; scroll up, scroll down
-  - **ctrl+f ctrl+b**    &rarr; move forward/backward one screen
-  - \<line-number\>**G** &rarr; jump to a specific line number
+  - **ctrl+u ctrl+d**    &rarr; scroll up/down half page
+  - **ctrl+y ctrl+e**    &rarr; scroll up/down line by line
+  - **ctrl+b ctrl+f**    &rarr; scroll up/down full page
   - **H M L**            &rarr; move to the top/middle/bottom of the screen
-  - **# &#42;**          &rarr; find the previous/next occurrence of the token under the cursor
-  - **n N**              &rarr; repeat the last find command forward/backward
   - **''**               &rarr; jump back to where you just were
   - **ctrl+o ctrl+i**    &rarr; move backward/forward through the jump history
   - **{}**               &rarr; move to the beginning/end of the paragraph
   - **()**               &rarr; move to the beginning/end of the sentence
   - **%**                &rarr; jump to the corresponding (, {, [
+  - **50%**              &rarr; jump to the line at the 50% of the file
+  - **:42**              &rarr; jump to the line 42
+  - **42G**              &rarr; jump to the line 42
   - **10|**              &rarr; move to column 10
   - **f**\<char\>        &rarr; move to next \<char\> on line &rarr; **;** next **,** previous occurrence
   - **F**\<char\>        &rarr; move to previous \<char\> on line
   - **t**\<char\>        &rarr; move before next \<char\> on line
   - **T**\<char\>        &rarr; move before previous \<char\> on line
+
+#### Movement in insert mode
+  - **shift+right arrow**    &rarr; go to the right, word by word
+  - **shift+left arrow**     &rarr; go to the left, word by word
 
 #### Moving screen
   - **zz** &rarr; scroll the view, that cursor is at center
@@ -57,14 +60,23 @@ desc: Cheat sheet for Vim.
   - **\"+p**               &rarr; paste from system's clipboard
 
 #### Search
+  To search for similar word under the cursor type **/** then press **ctrl-r** and **ctrl-w** &larr; this will
+  copy the word under the cursor to command line. Now you can edit it and press **enter**. To return to your
+  previous possition hit **ctrl-o**.
+
   - **/**\<char\> &rarr; search for \<char\> forwords
+  - **/**         &rarr; repeat the last search
+  - **5/pattern** &rarr; search for fifth occurrence of the pattern
   - **n**         &rarr; to go to next occurrence
   - **N**         &rarr; to go to previous occurrence
   - **ggn**       &rarr; to go to first occurrence
-  - **Gn**        &rarr; to go to last occurence
+  - **GN**        &rarr; to go to last occurrence
   - **?**\<char\> &rarr; search for \<char\> backwords
   - **n**         &rarr; to go to previous occurrence
   - **N**         &rarr; to go to next occurrence
+  - **# &#42;**   &rarr; find the previous/next occurrence of the exact word under the cursor (search &rarr; search)
+  - **g# g&#42;** &rarr; find the previous/next occurrence of the word under the cursor (search &rarr; searching)
+  - **6&#42;**     &rarr; search for sixth occurrence of the current word under the cursor
 
 #### Editing
   - **i a I A**     &rarr; insert/append at/after cursor/beginning/end of line
@@ -125,6 +137,11 @@ desc: Cheat sheet for Vim.
   - **cip** &rarr; change the content inside a paragraph  
   - **ci\"** &rarr; change the content inside a "..."  
   - **y4j** &rarr; copy 4 lines  
+
+#### Working with files
+  - **vim file.txt** &rarr; open file test.txt
+  - **vim** :e test.txt &rarr; open file test.txt from vim
+  - **vim** :wq test.txt &rarr; save as test.txt
 
 #### Tabs
   - **gt**  &rarr; go to next tab
